@@ -1,16 +1,16 @@
 {
-  "name": "FinalProject",
+  "name": "takeoff",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "bin/www",
-    "develop": "nodemon -q bin/www",
-    "db:create": "./node_modules/.bin/sequelize-cli db:create",
-    "db:drop": "./node_modules/.bin/sequelize-cli db:drop",
-    "db:migrate": "./node_modules/.bin/sequelize-cli db:migrate",
-    "db:rollback": "./node_modules/.bin/sequelize-cli db:migrate:undo",
-    "db:seed": "./node_modules/.bin/sequelize-cli db:seed:all",
-    "eslint": "eslint ./app"
+    "start": "node -r dotenv/config bin/www",
+    "develop": "nodemon -r dotenv/config bin/www",
+    "create": "sequelize db:create",
+    "drop": "sequelize db:drop",
+    "migrate": "sequelize db:migrate",
+    "rollback": "sequelize db:migrate:undo",
+    "seed": "sequelize db:seed:all",
+    "deploy": "yarn db:drop && yarn db:create && yarn db:migrate"
   },
   "license": "MIT",
   "dependencies": {
