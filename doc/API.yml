@@ -1,6 +1,6 @@
 openapi: '3.0.3'
 info:
-  title: API For Final Priject
+  title: API For TakeOff App
   version: '1.0'
 servers:
   - url: https://localhost:8000/v1
@@ -149,11 +149,9 @@ components:
     general-error:
       type: object
       properties:
-        code:
-          type: integer
-        message:
+        status:
           type: string
-        detail:
+        message:
           $ref: '#/components/schemas/detail-error'
 
     detail-error:
@@ -188,6 +186,4 @@ components:
         id:
           type: integer
         name:
-          type: string
-        status:
           type: string
