@@ -10,4 +10,7 @@ module.exports = {
   update(body, id) {
     return promoRepository.update(body, id);
   },
+  getById(id) {
+    return promoRepository.findById(id);
+  },
 };

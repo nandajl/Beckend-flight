@@ -13,4 +13,7 @@ module.exports = {
   update(body, id) {
     return Promo.update(body, { where: { id } });
   },
+  findById(id) {
+    return Promo.findByPk(id);
+  },
 };

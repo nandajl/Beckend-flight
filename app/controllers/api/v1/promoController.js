@@ -32,6 +32,7 @@ module.exports = {
       });
     }
   },
+
   async handleUpdatePromo(req, res) {
     try {
       const body = req.body;
@@ -46,6 +47,22 @@ module.exports = {
       res.status(400).json({
         status: 'FAIL',
         message: err.message,
+      });
+    }
+  },
+
+  async handleGetByIdPromo(req, res) {
+    try {
+      const param = req.params.id;
+      const promo = await promoService.getById(param);
+      res.status(201).json({
+        status: 'OK',
+        data: promo,
+      });
+    } catch (err) {
+      res.status(400).json({
+        status: 'FAIL',
+        data: err.message,
       });
     }
   },
