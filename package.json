@@ -29,5 +29,7 @@
   },
   "devDependencies": {
     "jest": "^29.3.1"
+    "sequelize-cli": "^6.5.2",
+    "swagger-ui-express": "^4.6.0"
   }
 }
