@@ -10,4 +10,7 @@ module.exports = {
   getTotalCount() {
     return Promo.count();
   },
+  update(body, id) {
+    return Promo.update(body, { where: { id } });
+  },
 };

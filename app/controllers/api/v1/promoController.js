@@ -32,4 +32,21 @@ module.exports = {
       });
     }
   },
+  async handleUpdatePromo(req, res) {
+    try {
+      const body = req.body;
+      const param = req.params.id;
+      console.log(param);
+      const promo = await promoService.update(body, param);
+      res.status(201).json({
+        status: 'OK',
+        message: promo,
+      });
+    } catch (err) {
+      res.status(400).json({
+        status: 'FAIL',
+        message: err.message,
+      });
+    }
+  },
 };

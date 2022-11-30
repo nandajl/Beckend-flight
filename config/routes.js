@@ -20,6 +20,7 @@ apiRouter.post('/api/v1/user', controllers.api.v1.authController.authorize, cont
 // promo
 apiRouter.post('/api/v1/promo', controllers.api.v1.promoController.handleCreatePromo);
 apiRouter.get('/api/v1/promo', controllers.api.v1.promoController.handleGetAllPromo);
+apiRouter.put('/api/v1/promo/:id', controllers.api.v1.promoController.handleUpdatePromo);
 
 // //cars Routes
 // apiRouter.get("/api/v1/cars", controllers.api.v1.carController.list);

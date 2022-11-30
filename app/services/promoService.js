@@ -7,4 +7,7 @@ module.exports = {
   getAll() {
     return promoRepository.getAll();
   },
+  update(body, id) {
+    return promoRepository.update(body, id);
+  },
 };
