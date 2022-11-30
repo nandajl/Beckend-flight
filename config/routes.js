@@ -7,6 +7,7 @@ const apiRouter = express.Router();
 
 apiRouter.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swgDoc));
 
+apiRouter.get('/', controllers.api.main.handleGetRoot)
 /**
  * Authentication Resource
  * */
@@ -24,12 +25,12 @@ apiRouter.put('/api/v1/promo/:id', controllers.api.v1.promoController.handleUpda
 apiRouter.get('/api/v1/promo/:id', controllers.api.v1.promoController.handleGetByIdPromo);
 apiRouter.delete('/api/v1/promo/:id', controllers.api.v1.promoController.handleDeletePromo);
 
-// //cars Routes
-// apiRouter.get("/api/v1/cars", controllers.api.v1.carController.list);
-// apiRouter.post("/api/v1/cars", controllers.api.v1.authController.authorizeAdmin, controllers.api.v1.carController.create);
-// apiRouter.put("/api/v1/cars/:id", controllers.api.v1.authController.authorizeAdmin, controllers.api.v1.carController.update);
-// apiRouter.get("/api/v1/cars/:id", controllers.api.v1.carController.show);
-// apiRouter.delete("/api/v1/cars/:id", controllers.api.v1.authController.authorizeAdmin, controllers.api.v1.carController.destroy);
+//user Routes
+apiRouter.get("/api/v1/users", controllers.api.v1.authController.authorize, controllers.api.v1.userController.list);
+apiRouter.post("/api/v1/users", controllers.api.v1.authController.authorizeAdmin, controllers.api.v1.userController.create);
+apiRouter.put("/api/v1/users/:id", controllers.api.v1.authController.authorize, controllers.api.v1.userController.update);
+apiRouter.get("/api/v1/users/:id", controllers.api.v1.authController.authorize, controllers.api.v1.userController.show);
+apiRouter.delete("/api/v1/users/:id", controllers.api.v1.authController.authorizeAdmin, controllers.api.v1.userController.destroy);
 
 apiRouter.use(controllers.api.main.onLost);
 apiRouter.use(controllers.api.main.onError);

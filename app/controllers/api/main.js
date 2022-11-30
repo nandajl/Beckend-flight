@@ -1,5 +1,12 @@
 
 module.exports = {
+  handleGetRoot(req, res) {
+    res.status(200).json({
+      status: "OK",
+      message: "BCR API is up and running!"
+    })
+  },
+
   onLost(req, res) {
     res.status(404).json({
       status: "FAIL",
