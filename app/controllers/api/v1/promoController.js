@@ -66,4 +66,16 @@ module.exports = {
       });
     }
   },
+  async handleDeletePromo(req, res) {
+    try {
+      const param = req.params.id;
+      const promo = await promoService.delete(param);
+      res.status(201).end();
+    } catch (err) {
+      res.status(400).json({
+        status: 'FAIL',
+        message: err.message,
+      });
+    }
+  },
 };

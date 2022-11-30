@@ -13,4 +13,7 @@ module.exports = {
   getById(id) {
     return promoRepository.findById(id);
   },
+  delete(id) {
+    return promoRepository.delete(id);
+  },
 };
