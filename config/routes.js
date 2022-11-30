@@ -1,11 +1,11 @@
 const express = require('express');
 const controllers = require('../app/controllers');
-// const swaggerUI = require("swagger-ui-express");
-// const swgDoc = require('../openapi.json');
+const swaggerUI = require('swagger-ui-express');
+const swgDoc = require('../doc/OBYKAO26_1-template-1.0.0-resolved.json');
 
 const apiRouter = express.Router();
 
-// apiRouter.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swgDoc))
+apiRouter.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swgDoc));
 
 /**
  * Authentication Resource

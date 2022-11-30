@@ -3,9 +3,9 @@ info:
   title: API For TakeOff App
   version: '1.0'
 servers:
-  - url: https://localhost:8000/v1
+  - url: https://localhost:8000/
 paths:
-  /auth/login:
+  /api/v1/login:
     post:
       tags:
         - 'Auth'
@@ -31,7 +31,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/general-error'
-  /auth/register:
+  /api/v1/register:
     post:
       tags:
         - 'Auth'
@@ -56,6 +56,24 @@ paths:
               schema:
                 $ref: '#/components/schemas/general-error'
   /auth/whoim:
+    get:
+      tags:
+        - 'Auth'
+      responses:
+        '200':
+          description: A success full respones
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/req-user'
+
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/general-error'
+  /api/v1/user:
     get:
       tags:
         - 'Auth'
