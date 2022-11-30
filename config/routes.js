@@ -1,21 +1,28 @@
-const express = require("express");
-const controllers = require("../app/controllers");
-// const swaggerUI = require("swagger-ui-express");
-// const swgDoc = require('../openapi.json');
+const express = require('express');
+const controllers = require('../app/controllers');
+const swaggerUI = require('swagger-ui-express');
+const swgDoc = require('../doc/OBYKAO26_1-template-1.0.0-resolved.json');
 
 const apiRouter = express.Router();
 
-// apiRouter.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swgDoc))
+apiRouter.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swgDoc));
 
 /**
  * Authentication Resource
  * */
-apiRouter.post("/api/v1/login", controllers.api.v1.authController.handleLogin);
-apiRouter.post("/api/v1/login/admin", controllers.api.v1.authController.authorizeAdmin, controllers.api.v1.authController.handleLogin);
-apiRouter.post("/api/v1/register", controllers.api.v1.authController.handleRegister);
+apiRouter.post('/api/v1/login', controllers.api.v1.authController.handleLogin);
+apiRouter.post('/api/v1/login/admin', controllers.api.v1.authController.authorizeAdmin, controllers.api.v1.authController.handleLogin);
+apiRouter.post('/api/v1/register', controllers.api.v1.authController.handleRegister);
 
 //current user
-apiRouter.post("/api/v1/user", controllers.api.v1.authController.authorize, controllers.api.v1.authController.whoAmI);
+apiRouter.post('/api/v1/user', controllers.api.v1.authController.authorize, controllers.api.v1.authController.whoAmI);
+
+// promo
+apiRouter.post('/api/v1/promo', controllers.api.v1.promoController.handleCreatePromo);
+apiRouter.get('/api/v1/promo', controllers.api.v1.promoController.handleGetAllPromo);
+apiRouter.put('/api/v1/promo/:id', controllers.api.v1.promoController.handleUpdatePromo);
+apiRouter.get('/api/v1/promo/:id', controllers.api.v1.promoController.handleGetByIdPromo);
+apiRouter.delete('/api/v1/promo/:id', controllers.api.v1.promoController.handleDeletePromo);
 
 // //cars Routes
 // apiRouter.get("/api/v1/cars", controllers.api.v1.carController.list);
@@ -23,7 +30,6 @@ apiRouter.post("/api/v1/user", controllers.api.v1.authController.authorize, cont
 // apiRouter.put("/api/v1/cars/:id", controllers.api.v1.authController.authorizeAdmin, controllers.api.v1.carController.update);
 // apiRouter.get("/api/v1/cars/:id", controllers.api.v1.carController.show);
 // apiRouter.delete("/api/v1/cars/:id", controllers.api.v1.authController.authorizeAdmin, controllers.api.v1.carController.destroy);
-
 
 apiRouter.use(controllers.api.main.onLost);
 apiRouter.use(controllers.api.main.onError);
