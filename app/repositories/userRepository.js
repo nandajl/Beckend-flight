@@ -13,4 +13,32 @@ module.exports = {
         return User.findByPk(id)
     },
 
+    update(id, update){
+        return User.update(update, {
+            where: {
+                id
+            }
+        })
+    },
+
+    delete(id){
+        return User.destroy({
+            where : { id }
+        })
+    },
+
+    findAll(condition) {
+        return User.findAll({
+            where : condition
+        });
+    },
+
+    getTotalUser(condition) {
+        return User.count({
+            where: condition
+        });
+    },
+
+
+
 }

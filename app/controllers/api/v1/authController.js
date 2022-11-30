@@ -4,7 +4,7 @@ const authService = require('../../../services/authService')
 module.exports = {
     handleRegister(req,res){
         const {username, email, password} = req.body;
-        const role = "2"
+        const role = "buyer"
         authService.register(username, email, password, role).then((user)=>{
             if(!user){
                 res.status(401).json({

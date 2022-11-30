@@ -18,13 +18,31 @@ module.exports = {
       password: {
         type: Sequelize.STRING
       },
+      role: {
+        type: Sequelize.STRING
+      },
+      firstName: {
+        type: Sequelize.STRING
+      },
+      lastName: {
+        type: Sequelize.STRING
+      },
       address: {
         type: Sequelize.TEXT
       },
-      role_id: {
-        type: Sequelize.INTEGER
-      },
       photo: {
+        type: Sequelize.STRING
+      },
+      phone: {
+        type: Sequelize.STRING
+      },
+      imgVisa: {
+        type: Sequelize.STRING
+      },
+      imgPassport: {
+        type: Sequelize.STRING
+      },
+      imgResidentPermit: {
         type: Sequelize.STRING
       },
       createdAt: {

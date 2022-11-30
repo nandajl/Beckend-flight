@@ -53,9 +53,8 @@ module.exports = {
                 username,
                 email,
                 password: encryptedPassword,
-                role_id: role
+                role
             }
-            console.log(body)
             const user = await userRepository.create(body);
     
             return user;
@@ -120,7 +119,7 @@ module.exports = {
     
             const id = payload?.id;
             const role = payload?.role;
-            if (role == "1") {
+            if (role == "admin") {
                 const user = await userRepository.findUser(id);
         
                 return user;
