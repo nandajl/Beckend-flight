@@ -7,7 +7,7 @@ const apiRouter = express.Router();
 
 // apiRouter.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swgDoc))
 
-apiRouter.use('/', controllers.api.main.handleGetRoot)
+apiRouter.get('/', controllers.api.main.handleGetRoot)
 /**
  * Authentication Resource
  * */
