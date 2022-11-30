@@ -16,4 +16,20 @@ module.exports = {
       });
     }
   },
+
+  async handleGetAllPromo(req, res) {
+    try {
+      const promo = await promoService.getAll();
+      console.log(promo);
+      res.status(201).json({
+        status: 'Ok',
+        data: promo,
+      });
+    } catch (err) {
+      res.status(400).json({
+        status: 'FAIL',
+        message: err.message,
+      });
+    }
+  },
 };
