@@ -104,12 +104,18 @@ module.exports = {
     },
 
     whoAmI(req, res){
-        const user = req.user;
-        res.status(201).json({
-            status: "OK",
-            data: user
-        }).catch()
-        
-        
+        try {
+            const user = req.user;
+            res.status(201).json({
+                status: "OK",
+                data: user
+            })
+            return;            
+        } catch (err) {
+            res.status(401).json({
+                status: "FAIL",
+                message: err.message
+            })
+        }
     }
 }

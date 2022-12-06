@@ -38,7 +38,17 @@
               }
             }
           },
-          "default": {
+          "401": {
+            "description": "Email or password is not identified",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/general-error"
+                }
+              }
+            }
+          },
+          "400": {
             "description": "An unexpected error response.",
             "content": {
               "application/json": {
@@ -58,7 +68,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/req-user"
+                "$ref": "#/components/schemas/req-register"
               }
             }
           },
@@ -70,7 +80,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/req-user"
+                  "$ref": "#/components/schemas/req-register"
                 }
               }
             }
@@ -245,8 +255,44 @@
       "res-login-success": {
         "type": "object",
         "properties": {
-          "accessToken": {
+          "status": {
             "type": "string"
+          },
+          "data": {
+            "type": "object",
+            "properties":{
+              "id":{
+                "type":"integer",
+                "example":"1"
+              },
+              "username":{
+                "type":"string"
+              },
+              "email":{
+                "type":"string"
+              },
+              "password":{
+                "type":"string"
+              },
+              "role":{
+                "type":"string"
+              },
+              "firstName":{
+                "type":"string"
+              },
+              "lastName":{
+                "type":"string"
+              },
+              "address":{
+                "type":"string"
+              },
+              "photo":{
+                "type":"string"
+              },
+              "phone":{
+                "type":"string"
+              }
+            }
           }
         }
       },
@@ -254,10 +300,11 @@
         "type": "object",
         "properties": {
           "status": {
-            "type": "string"
+            "type": "string",
+            "example":"FAIL"
           },
           "message": {
-            "$ref": "#/components/schemas/detail-error"
+            "type":"string"
           }
         }
       },
@@ -272,6 +319,20 @@
           },
           "additionalProp2": {
             "type": "string"
+          }
+        }
+      },
+      "req-register":{
+        "type":"object",
+        "properties":{
+          "username":{
+            "type":"string"
+          },
+          "email":{
+            "type":"string"
+          },
+          "password":{
+            "type":"string"
           }
         }
       },

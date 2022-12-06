@@ -10,7 +10,7 @@
     "migrate": "sequelize db:migrate",
     "rollback": "sequelize db:migrate:undo",
     "seed": "sequelize db:seed:all",
-    "deploy": "yarn drop && yarn db:create && yarn db:migrate",
+    "deploy": "yarn drop && yarn cretae && yarn migrate",
     "test": "jest"
   },
   "license": "MIT",
