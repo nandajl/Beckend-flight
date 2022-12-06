@@ -3,20 +3,12 @@ const userService = require("../../../services/userService")
 module.exports = {
     async update(req,res){
         try {
-            const dataUser = {
-                firstName : req.body.firstName,
-                lastName: req.body.lastName,
-                address : req.body.address,
-                photo : req.body.photo,
-                phone : req.body.phone,
-                imgVisa : req.body.imgVisa,
-                imgPassport : req.body.imgPassport,
-                imgResidentPermit : req.body.imgResidentPermit
-            }
-            const user = await userService.update(req.params.id, dataUser);
+            const image = req.file
+            const body = req.body
+            const user = await userService.update(req.params.id, body, image);
             res.status(201).json({
                 status:"OK",
-                data: dataUser
+                data: body
             });
         } catch (err) {
             res.status(400).json({

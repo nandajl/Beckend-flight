@@ -7,6 +7,9 @@
 - jsonwebtoken
 - sequelize
 
+## Live demo
+https://beckend-takeoff-production.up.railway.app
+
 ## DB
 
-![image](./doc/img/db.jpg)
+![image](./doc/img/db.png)

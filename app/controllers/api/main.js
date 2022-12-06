@@ -3,7 +3,7 @@ module.exports = {
   handleGetRoot(req, res) {
     res.status(200).json({
       status: "OK",
-      message: "Takeoff API is up and running!"
+      message: "TakeOff API is up and running!"
     })
   },
 
