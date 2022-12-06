@@ -13,7 +13,7 @@ module.exports = {
         return User.findByPk(id)
     },
 
-    update(id, update){
+    update(id, update, image){
         return User.update(update, {
             where: {
                 id

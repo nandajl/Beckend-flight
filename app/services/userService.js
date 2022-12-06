@@ -13,15 +13,18 @@ module.exports = {
     },
     
     async update(id, body, image) {
-        try {
+        if (image == undefined) {
+            return userRepository.update(id, body);
+        }
+        else{
             const fileBase64 = image.buffer.toString("base64");
             const file = `data:${image.mimetype};base64,${fileBase64}`;
             try {
+                console.log("body : ", body)
                 const result = await cloudinary.uploader.upload(file, {
                     folder: "image"
                 })
                 body.photo = result.url
-
                 return userRepository.update(id, body);
             } catch (err) {
                 return res.status(400).json({
@@ -29,9 +32,6 @@ module.exports = {
                     message: "Upload image failed"
                 })
             }
-
-        } catch (error) {
-            
         }
     },
 
