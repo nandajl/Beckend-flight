@@ -12,11 +12,14 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
-      description: {
+      code: {
         type: Sequelize.STRING
       },
       discount: {
         type: Sequelize.INTEGER
+      },
+      description: {
+        type: Sequelize.STRING
       },
       photo: {
         type: Sequelize.STRING

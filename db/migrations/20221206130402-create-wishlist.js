@@ -1,7 +1,5 @@
 'use strict';
 
-const user = require('../../app/models/user');
-
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
@@ -13,16 +11,22 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       ticket_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Tickets',
+          key: 'id'
+        },
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
       },
       user_id: {
         type: Sequelize.INTEGER,
-        // references: {
-        //   model: 'User',
-        //   key: 'id'
-        // },
-        // onDelete: 'CASCADE',
-        // onUpdate: 'CASCADE'
+        references: {
+          model: 'Users',
+          key: 'id'
+        },
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
       },
       createdAt: {
         allowNull: false,

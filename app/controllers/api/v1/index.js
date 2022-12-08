@@ -4,11 +4,13 @@ const promoController = require('./promoController');
 const userController = require("./userController");
 const planeController = require("./planeController");
 const ticketController = require("./ticketController");
+const wishlistController = require("./wishlistController");
 
 module.exports = {
   authController,
   promoController,
   userController,
   planeController,
-  ticketController
+  ticketController,
+  wishlistController
 };

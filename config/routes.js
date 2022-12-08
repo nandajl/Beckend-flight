@@ -46,6 +46,13 @@ apiRouter.put("/api/v1/ticket/:id", controllers.api.v1.ticketController.handleUp
 apiRouter.get("/api/v1/ticket/:id", controllers.api.v1.ticketController.handleGetTicket);
 apiRouter.delete("/api/v1/ticket/:id", controllers.api.v1.ticketController.handleDeleteTicket);
 
+//wishlist routes
+apiRouter.get("/api/v1/wishlist", controllers.api.v1.wishlistController.handleListWishlist);
+apiRouter.post('/api/v1/wishlist', controllers.api.v1.wishlistController.handleCreateWishlist);
+apiRouter.put("/api/v1/wishlist/:id", controllers.api.v1.wishlistController.handleUpdateWishlist);
+apiRouter.get("/api/v1/wishlist/:id", controllers.api.v1.wishlistController.handleGetWishlist);
+apiRouter.delete("/api/v1/wishlist/:id", controllers.api.v1.wishlistController.handleDeleteWishlist);
+
 
 apiRouter.use(controllers.api.main.onLost);
 apiRouter.use(controllers.api.main.onError);
