@@ -16,4 +16,8 @@ module.exports = {
   getTotalCount() {
     return Airport.count();
   },
+
+  getByPk(id) {
+    return Airport.findByPk(id);
+  },
 };

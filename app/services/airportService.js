@@ -22,4 +22,8 @@ module.exports = {
       throw err;
     }
   },
+
+  getByPk(id) {
+    return airportRepository.getByPk(id);
+  },
 };

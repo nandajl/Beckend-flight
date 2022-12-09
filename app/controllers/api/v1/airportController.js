@@ -53,4 +53,19 @@ module.exports = {
       });
     }
   },
+  async handleGetByPk(req, res) {
+    try {
+      const id = req.params.id;
+      const airport = await airportService.getByPk(id);
+      res.status(201).json({
+        status: 'OK',
+        data: airport,
+      });
+    } catch (err) {
+      res.status(400).json({
+        status: 'FAIL',
+        message: err.message,
+      });
+    }
+  },
 };

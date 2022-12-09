@@ -50,6 +50,7 @@ apiRouter.delete('/api/v1/ticket/:id', controllers.api.v1.ticketController.handl
 apiRouter.post('/api/vi/airport', controllers.api.v1.airportConroller.handleCreateAirport);
 apiRouter.put('/api/vi/airport/:id', controllers.api.v1.airportConroller.handleUpdateAirport);
 apiRouter.get('/api/vi/airport', controllers.api.v1.airportConroller.handleGetAllAirport);
+apiRouter.get('/api/vi/airport/:id', controllers.api.v1.airportConroller.handleGetByPk);
 
 apiRouter.use(controllers.api.main.onLost);
 apiRouter.use(controllers.api.main.onError);
