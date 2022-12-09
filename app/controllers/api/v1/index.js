@@ -4,6 +4,7 @@ const userController = require('./userController');
 const planeController = require('./planeController');
 const ticketController = require('./ticketController');
 const airportConroller = require('./airportController');
+const flightContoller = require('./flihtCortoller');
 
 module.exports = {
   authController,
@@ -12,4 +13,5 @@ module.exports = {
   planeController,
   ticketController,
   airportConroller,
+  flightContoller,
 };
