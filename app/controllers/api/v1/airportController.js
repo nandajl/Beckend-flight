@@ -27,7 +27,7 @@ module.exports = {
 
       res.status(201).json({
         status: 'OK',
-        data: body,
+        data: airport,
       });
     } catch (err) {
       res.status(400).json({

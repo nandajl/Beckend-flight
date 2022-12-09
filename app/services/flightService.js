@@ -18,4 +18,16 @@ module.exports = {
   create(body) {
     return flightRepository.create(body);
   },
+
+  update(id, body) {
+    return flightRepository.update(id, body);
+  },
+
+  delete(id) {
+    return flightRepository.delete(id);
+  },
+
+  getById(id) {
+    return flightRepository.getById(id);
+  },
 };

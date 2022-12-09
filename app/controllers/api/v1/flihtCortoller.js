@@ -34,4 +34,22 @@ module.exports = {
       });
     }
   },
+
+  async handleUpdateFlight(req, res) {
+    try {
+      const id = req.params.id;
+      const body = req.body;
+      const flight = await flightService.update(id, body);
+
+      res.status(201).json({
+        status: 'OK',
+        data: flight,
+      });
+    } catch (err) {
+      res.status(400).json({
+        status: 'FAIL',
+        messange: err.messange,
+      });
+    }
+  },
 };
