@@ -8,4 +8,8 @@ module.exports = {
   getTotalCount() {
     return Flight.count();
   },
+
+  create(body) {
+    return Flight.create(body);
+  },
 };

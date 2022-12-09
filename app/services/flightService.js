@@ -14,4 +14,8 @@ module.exports = {
       throw err;
     }
   },
+
+  create(body) {
+    return flightRepository.create(body);
+  },
 };

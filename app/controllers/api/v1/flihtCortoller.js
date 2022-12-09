@@ -16,4 +16,22 @@ module.exports = {
       });
     }
   },
+
+  async handleCreateFligh(req, res) {
+    try {
+      const body = req.body;
+      console.log(body);
+      const flight = await flightService.create(body);
+
+      res.status(201).json({
+        status: 'OK',
+        data: flight,
+      });
+    } catch (err) {
+      res.status(400).json({
+        status: 'FAIL',
+        messange: err.messange,
+      });
+    }
+  },
 };
