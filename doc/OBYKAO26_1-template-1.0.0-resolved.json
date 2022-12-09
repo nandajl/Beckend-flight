@@ -171,9 +171,9 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/req-user"
+            "multipart/form-data":{
+              "schema":{
+                "$ref":"#/components/schemas/req-user"
               }
             }
           },
@@ -1314,6 +1314,16 @@
                 "type": "string"
               }
             }
+          }
+        }
+      },
+      "images-body":{
+        "required": "image",
+        "type":"object",
+        "properties":{
+          "image":{
+            "type":"string",
+            "format":"binary"
           }
         }
       },
