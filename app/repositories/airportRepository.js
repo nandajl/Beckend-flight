@@ -20,4 +20,8 @@ module.exports = {
   getByPk(id) {
     return Airport.findByPk(id);
   },
+
+  delete(id) {
+    return Airport.destroy({ where: { id } });
+  },
 };

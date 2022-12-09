@@ -68,4 +68,21 @@ module.exports = {
       });
     }
   },
+
+  async handleDeleteAirport(req, res) {
+    try {
+      const id = req.params.id;
+      await airportService.delete(id);
+
+      res.status(201).json({
+        status: 'OK',
+        message: 'Airport successfully deleted',
+      });
+    } catch (err) {
+      res.status(400).json({
+        status: 'FAIL',
+        message: err.message,
+      });
+    }
+  },
 };

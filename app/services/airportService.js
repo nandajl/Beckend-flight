@@ -26,4 +26,8 @@ module.exports = {
   getByPk(id) {
     return airportRepository.getByPk(id);
   },
+
+  delete(id) {
+    return airportRepository.delete(id);
+  },
 };
