@@ -1,6 +1,4 @@
-const authService = require('../../app/services/authService');
-
-('use strict');
+'use strict';
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
@@ -14,13 +12,12 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
      */
-
-    return queryInterface.bulkInsert('Users', [
+    await queryInterface.bulkInsert('Flights', [
       {
-        username: 'admin',
-        email: 'admin@mail.com',
-        password: await authService.encryptPassword('12345'),
-        role: 'admin',
+        from_airport_id: 2,
+        to_airport_id: 3,
+        arrival_time: new Date(),
+        depature: new Date(),
         createdAt: new Date(),
         updatedAt: new Date(),
       },
