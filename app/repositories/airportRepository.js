@@ -8,4 +8,12 @@ module.exports = {
   update(id, body) {
     return Airport.update(body, { where: { id } });
   },
+
+  getAll() {
+    return Airport.findAll();
+  },
+
+  getTotalCount() {
+    return Airport.count();
+  },
 };

@@ -36,4 +36,21 @@ module.exports = {
       });
     }
   },
+
+  async handleGetAllAirport(req, res) {
+    try {
+      const { data, count } = await airportService.getAll();
+
+      res.status(201).json({
+        status: 'OK',
+        data: data,
+        count: count,
+      });
+    } catch (err) {
+      res.status(400).json({
+        status: 'FAIL',
+        message: err.message,
+      });
+    }
+  },
 };
