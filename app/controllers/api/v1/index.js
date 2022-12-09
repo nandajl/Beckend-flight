@@ -15,7 +15,7 @@ module.exports = {
   userController,
   planeController,
   ticketController,
-  wishlistController
+  wishlistController,
   airportConroller,
   flightContoller,
 };
