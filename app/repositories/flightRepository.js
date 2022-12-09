@@ -22,6 +22,6 @@ module.exports = {
   },
 
   delete(id) {
-    return Flight.desdroy({ where: { id } });
+    return Flight.destroy({ where: { id } });
   },
 };

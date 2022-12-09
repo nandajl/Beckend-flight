@@ -53,9 +53,10 @@ module.exports = {
     }
   },
 
-  async handleGetByPk(res, req) {
+  async handleGetByPk(req, res) {
     try {
-      const id = res.params.id;
+      const id = req.params.id;
+
       const flight = await flightService.getByPk(id);
 
       res.status(201).json({
@@ -64,7 +65,7 @@ module.exports = {
       });
     } catch (err) {
       res.status(400).json({
-        status: 'OK',
+        status: 'FAIL',
         messange: err.messange,
       });
     }
@@ -77,7 +78,7 @@ module.exports = {
 
       res.status(201).json({
         status: 'OK',
-        messange: 'Plane successfully deleted',
+        messange: 'Flight successfully deleted',
       });
     } catch (err) {
       res.status(400).json({
