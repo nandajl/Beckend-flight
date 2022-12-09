@@ -69,4 +69,21 @@ module.exports = {
       });
     }
   },
+
+  async handleDeleteFlight(req, res) {
+    try {
+      const id = req.params.id;
+      const flight = await flightService.delete(id);
+
+      res.status(201).json({
+        status: 'OK',
+        messange: 'Plane successfully deleted',
+      });
+    } catch (err) {
+      res.status(400).json({
+        status: 'FAIL',
+        messange: err.messange,
+      });
+    }
+  },
 };
