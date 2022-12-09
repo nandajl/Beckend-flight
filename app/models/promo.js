@@ -15,8 +15,9 @@ module.exports = (sequelize, DataTypes) => {
   }
   Promo.init({
     name: DataTypes.STRING,
-    description: DataTypes.STRING,
+    code: DataTypes.STRING,
     discount: DataTypes.INTEGER,
+    description: DataTypes.STRING,
     photo: DataTypes.STRING
   }, {
     sequelize,

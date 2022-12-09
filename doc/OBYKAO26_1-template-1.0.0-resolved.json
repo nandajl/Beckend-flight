@@ -107,7 +107,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/req-user"
+                  "$ref": "#/components/schemas/res-user"
                 }
               }
             }
@@ -125,16 +125,17 @@
         }
       }
     },
-    "/api/v1/user": {
+    "/api/v1/users": {
       "get": {
-        "tags": ["Auth"],
+        "tags": ["Users"],
+        "description":"Get data all user \n\n Allowed role: Admin",
         "responses": {
           "200": {
             "description": "A success full respones",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/req-user"
+                  "$ref": "#/components/schemas/res-list-user"
                 }
               }
             }
@@ -152,9 +153,10 @@
         }
       }
     },
-    "/auth/user{id}": {
+    "/api/v1/user/{id}": {
       "put": {
         "tags": ["Users"],
+        "description":"Update data one user \n\n Allowed role: Buyer, Admin",
         "parameters": [
           {
             "name": "id",
@@ -183,7 +185,45 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/req-user"
+                  "$ref": "#/components/schemas/res-user"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/general-error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": ["Users"],
+        "description":"Get data one user by id \n\n Allowed role: Buyer, Admin",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A success full response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/res-user"
                 }
               }
             }
@@ -220,7 +260,526 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object"
+                  "$ref": "#/components/schemas/res-delete"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/general-error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/ticket": {
+      "get": {
+        "tags": ["Ticket"],
+        "description":"Get data all ticker \n\n Allowed role: Admin, Buyer",
+        "responses": {
+          "200": {
+            "description": "A success full respones",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/res-list-ticket"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/general-error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Ticket"],
+        "description":"Create data ticket \n\n Allowed role: Admin",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/req-ticket"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "A success full respones",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/res-ticket"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/general-error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/ticket/{id}": {
+      "put": {
+        "tags": ["Ticket"],
+        "description":"Update data one ticket \n\n Allowed role: Admin",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/req-ticket"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "A success full response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/res-ticket"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/general-error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": ["Ticket"],
+        "description":"Get data one user by id \n\n Allowed role: Buyer, Admin",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A success full response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/res-ticket"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/general-error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Ticket"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A success full response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/res-delete"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/general-error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/wishlist": {
+      "get": {
+        "tags": ["Wishlist"],
+        "description":"Get data all wishlist \n\n Allowed role: Admin",
+        "responses": {
+          "200": {
+            "description": "A success full respones",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/res-list-wishlist"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/general-error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Wishlist"],
+        "description":"Create data wishlist \n\n Allowed role: Admin",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/req-wishlist"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "A success full respones",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/res-wishlist"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/general-error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/wishlist/{id}": {
+      "get": {
+        "tags": ["Wishlist"],
+        "description":"Get detail one data wishlist by id \n\n Allowed role: Buyer, Admin",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A success full response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/res-wishlist"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/general-error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Wishlist"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A success full response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/res-delete"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/general-error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/promo": {
+      "get": {
+        "tags": ["Promo"],
+        "description":"Get data all promo \n\n Allowed role: Admin, Buyer",
+        "responses": {
+          "200": {
+            "description": "A success full respones",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/res-list-promo"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/general-error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Promo"],
+        "description":"Create data promo \n\n Allowed role: Admin",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/req-promo"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "A success full respones",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/res-promo"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/general-error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/promo/{id}": {
+      "put": {
+        "tags": ["Promo"],
+        "description":"Update data one promo \n\n Allowed role: Admin",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/req-promo"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "A success full response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/res-promo"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/general-error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": ["Promo"],
+        "description":"Get detail one data promo by id \n\n Allowed role: Buyer, Admin",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A success full response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/res-promo"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/general-error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Promo"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A success full response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/res-delete"
                 }
               }
             }
@@ -238,6 +797,8 @@
         }
       }
     }
+
+
   },
   "components": {
     "schemas": {
@@ -291,6 +852,15 @@
               },
               "phone":{
                 "type":"string"
+              },
+              "createdAt":{
+                "type": "string"
+              },
+              "updatedAt":{
+                "type": "string"
+              },
+              "token":{
+                "type": "string"
               }
             }
           }
@@ -338,27 +908,423 @@
       },
       "req-user": {
         "type": "object",
+          "properties":{
+            "username":{
+              "type":"string"
+            },
+            "email":{
+              "type":"string"
+            },
+            "firstName":{
+              "type":"string"
+            },
+            "lastName":{
+              "type":"string"
+            },
+            "address":{
+              "type":"string"
+            },
+            "photo":{
+              "type":"string"
+            },
+            "phone":{
+              "type":"string"
+            }
+          }
+      },
+      "res-user": {
+        "type": "object",
         "properties": {
-          "id": {
-            "type": "number"
-          },
-          "name": {
+          "status": {
             "type": "string"
           },
-          "email": {
+          "data": {
+            "type": "object",
+            "properties":{
+              "id":{
+                "type":"integer",
+                "example":"1"
+              },
+              "username":{
+                "type":"string"
+              },
+              "email":{
+                "type":"string"
+              },
+              "password":{
+                "type":"string"
+              },
+              "role":{
+                "type":"string"
+              },
+              "firstName":{
+                "type":"string"
+              },
+              "lastName":{
+                "type":"string"
+              },
+              "address":{
+                "type":"string"
+              },
+              "photo":{
+                "type":"string"
+              },
+              "phone":{
+                "type":"string"
+              },
+              "createdAt":{
+                "type": "string"
+              },
+              "updatedAt":{
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "res-list-user": {
+        "type": "object",
+        "properties": {
+          "status": {
             "type": "string"
           },
-          "password": {
+          "data": {
+            "type": "object",
+            "properties":{
+              "id":{
+                "type":"integer",
+                "example":"1"
+              },
+              "username":{
+                "type":"string"
+              },
+              "email":{
+                "type":"string"
+              },
+              "password":{
+                "type":"string"
+              },
+              "role":{
+                "type":"string"
+              },
+              "firstName":{
+                "type":"string"
+              },
+              "lastName":{
+                "type":"string"
+              },
+              "address":{
+                "type":"string"
+              },
+              "photo":{
+                "type":"string"
+              },
+              "phone":{
+                "type":"string"
+              },
+              "createdAt":{
+                "type": "string"
+              },
+              "updatedAt":{
+                "type": "string"
+              }
+            }
+          },
+          "total":{
+            "type":"object",
+            "properties":{
+              "total":{
+                "type":"integer",
+                "example":"1"
+              }
+            }
+          }
+        }
+      },
+      "res-list-ticket": {
+        "type": "object",
+        "properties": {
+          "status": {
             "type": "string"
           },
-          "address": {
+          "data": {
+            "type": "object",
+            "properties":{
+              "id":{
+                "type":"integer",
+                "example":"1"
+              },
+              "flight_id":{
+                "type":"integer"
+              },
+              "type":{
+                "type":"string"
+              },
+              "price":{
+                "type":"string"
+              },
+              "desc":{
+                "type":"string"
+              },
+              "createdAt":{
+                "type": "string"
+              },
+              "updatedAt":{
+                "type": "string"
+              }
+            }
+          },
+          "total":{
+            "type":"object",
+            "properties":{
+              "total":{
+                "type":"integer",
+                "example":"1"
+              }
+            }
+          }
+        }
+      },
+      "res-ticket": {
+        "type": "object",
+        "properties": {
+          "status": {
             "type": "string"
           },
-          "role": {
-            "$ref": "#/components/schemas/role"
-          },
-          "foto": {
+          "data": {
+            "type": "object",
+            "properties":{
+              "id":{
+                "type":"integer",
+                "example":"1"
+              },
+              "flight_id":{
+                "type":"integer"
+              },
+              "type":{
+                "type":"string"
+              },
+              "price":{
+                "type":"string"
+              },
+              "desc":{
+                "type":"string"
+              },
+              "createdAt":{
+                "type": "string"
+              },
+              "updatedAt":{
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "req-ticket": {
+        "type": "object",
+          "properties":{
+            "flight_id":{
+              "type":"integer"
+            },
+            "type":{
+              "type":"string"
+            },
+            "price":{
+              "type":"string"
+            },
+            "desc":{
+              "type":"string"
+            }
+          }
+      },
+      "req-wishlist": {
+        "type": "object",
+          "properties":{
+            "ticket_id":{
+              "type":"integer"
+            },
+            "user_id":{
+              "type":"string"
+            }
+          }
+      },
+      "res-list-wishlist": {
+        "type": "object",
+        "properties": {
+          "status": {
             "type": "string"
+          },
+          "data": {
+            "type": "object",
+            "properties":{
+              "id":{
+                "type":"integer",
+                "example":"1"
+              },
+              "ticket_id":{
+                "type":"integer"
+              },
+              "user_id":{
+                "type":"integer"
+              },
+              "createdAt":{
+                "type": "string"
+              },
+              "updatedAt":{
+                "type": "string"
+              },
+              "Ticket": {
+                "type": "object"
+              },
+              "User": {
+                "type": "object"
+              }
+            }
+          },
+          "total":{
+            "type":"object",
+            "properties":{
+              "total":{
+                "type":"integer",
+                "example":"1"
+              }
+            }
+          }
+        }
+      },
+      "res-wishlist": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "data": {
+            "type": "object",
+            "properties":{
+              "id":{
+                "type":"integer",
+                "example":"1"
+              },
+              "ticket_id":{
+                "type":"integer"
+              },
+              "user_id":{
+                "type":"string"
+              },
+              "createdAt":{
+                "type": "string"
+              },
+              "updatedAt":{
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "req-promo": {
+        "type": "object",
+          "properties":{
+            "name":{
+              "type":"string"
+            },
+            "code":{
+              "type":"string"
+            },
+            "discount":{
+              "type":"integer"
+            },
+            "description":{
+              "type":"string"
+            }
+          }
+      },
+      "res-list-promo": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "data": {
+            "type": "object",
+            "properties":{
+              "id":{
+                "type":"integer",
+                "example":"1"
+              },
+              "name":{
+                "type":"string"
+              },
+              "code":{
+                "type":"string"
+              },
+              "discount":{
+                "type":"integer"
+              },
+              "description":{
+                "type":"string"
+              },
+              "createdAt":{
+                "type": "string"
+              },
+              "updatedAt":{
+                "type": "string"
+              }
+            }
+          },
+          "total":{
+            "type":"object",
+            "properties":{
+              "total":{
+                "type":"integer",
+                "example":"1"
+              }
+            }
+          }
+        }
+      },
+      "res-promo": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "data": {
+            "type": "object",
+            "properties":{
+              "id":{
+                "type":"integer",
+                "example":"1"
+              },
+              "name":{
+                "type":"string"
+              },
+              "code":{
+                "type":"string"
+              },
+              "discount":{
+                "type":"integer"
+              },
+              "description":{
+                "type":"string"
+              },
+              "createdAt":{
+                "type": "string"
+              },
+              "updatedAt":{
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "res-delete": {
+        "type":"object",
+        "properties": {
+          "status": {
+            "type":"string"
+          },
+          "message": {
+            "type":"string"
           }
         }
       },
@@ -376,3 +1342,5 @@
     }
   }
 }
+  
+  

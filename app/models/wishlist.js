@@ -11,14 +11,12 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      // Wishlist.belongsTo(models.User, {
-      //   foreignKey: 'id',
-      //   targetKey: 'user_id'
-      // }),
-      // Wishlist.belongsTo(models.Ticket, {
-      //   foreignKey: 'id',
-      //   targetKey: 'ticket_id'
-      // })
+      Wishlist.belongsTo(models.Ticket, {
+        foreignKey: 'ticket_id'
+      }),
+      Wishlist.belongsTo(models.User, {
+        foreignKey: 'user_id'
+      })
     }
   }
   Wishlist.init({
