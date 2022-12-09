@@ -17,7 +17,7 @@ module.exports = {
     return Flight.update(body, { where: { id } });
   },
 
-  getById(id) {
+  getByPk(id) {
     return Flight.findByPk(id);
   },
 

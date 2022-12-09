@@ -52,4 +52,21 @@ module.exports = {
       });
     }
   },
+
+  async handleGetByPk(res, req) {
+    try {
+      const id = res.params.id;
+      const flight = await flightService.getByPk(id);
+
+      res.status(201).json({
+        status: 'OK',
+        data: flight,
+      });
+    } catch (err) {
+      res.status(400).json({
+        status: 'OK',
+        messange: err.messange,
+      });
+    }
+  },
 };

@@ -27,7 +27,7 @@ module.exports = {
     return flightRepository.delete(id);
   },
 
-  getById(id) {
-    return flightRepository.getById(id);
+  getByPk(id) {
+    return flightRepository.getByPk(id);
   },
 };

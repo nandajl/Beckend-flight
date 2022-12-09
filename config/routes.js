@@ -57,6 +57,7 @@ apiRouter.delete('/api/vi/airport/:id', controllers.api.v1.airportConroller.hand
 apiRouter.get('/api/vi/flight', controllers.api.v1.flightContoller.handleGettAllFliht);
 apiRouter.post('/api/vi/flight', controllers.api.v1.flightContoller.handleCreateFligh);
 apiRouter.put('/api/vi/flight/:id', controllers.api.v1.flightContoller.handleUpdateFlight);
+apiRouter.get('/api/vi/flight/:id', controllers.api.v1.flightContoller.handleGetByPk);
 
 apiRouter.use(controllers.api.main.onLost);
 apiRouter.use(controllers.api.main.onError);
