@@ -4,4 +4,8 @@ module.exports = {
   create(body) {
     return airportRepository.create(body);
   },
+
+  update(id, body) {
+    airportRepository.update(id, body);
+  },
 };

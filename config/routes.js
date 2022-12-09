@@ -48,6 +48,7 @@ apiRouter.delete('/api/v1/ticket/:id', controllers.api.v1.ticketController.handl
 
 // airport
 apiRouter.post('/api/vi/airport', controllers.api.v1.airportConroller.handleCreateAirport);
+apiRouter.put('/api/vi/airport/:id', controllers.api.v1.airportConroller.handleUpdateAirport);
 
 apiRouter.use(controllers.api.main.onLost);
 apiRouter.use(controllers.api.main.onError);
