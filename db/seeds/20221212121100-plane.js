@@ -12,12 +12,11 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
      */
-    await queryInterface.bulkInsert('Flights', [
+    await queryInterface.bulkInsert('Planes', [
       {
-        from_airport_id: 1,
-        to_airport_id: 1,
-        arrival_time: new Date(),
-        depature: new Date(),
+        name: 'Air Asia',
+        capacity: 100,
+        status: 'Ready',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
