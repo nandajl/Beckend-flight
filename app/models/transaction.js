@@ -19,6 +19,9 @@ module.exports = (sequelize, DataTypes) => {
       }),
       Transaction.belongsTo(models.Promo, {
         foreignKey: 'promo_id'
+      }),
+      Transaction.hasMany(models.Notification, {
+        foreignKey: 'transaction_id'
       })
     }
   }

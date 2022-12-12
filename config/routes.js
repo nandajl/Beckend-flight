@@ -67,13 +67,15 @@ apiRouter.put('/api/vi/flight/:id', controllers.api.v1.flightContoller.handleUpd
 apiRouter.get('/api/vi/flight/:id', controllers.api.v1.flightContoller.handleGetByPk);
 apiRouter.delete('/api/vi/flight/:id', controllers.api.v1.flightContoller.handleDeleteFlight);
 
-// flight
+// transaction
 apiRouter.get('/api/v1/transaction', controllers.api.v1.transactionController.handleListTransaction);
 apiRouter.post('/api/v1/transaction', controllers.api.v1.transactionController.handleCreateTransaction);
 apiRouter.put('/api/v1/transaction/:id', controllers.api.v1.transactionController.handleUpdateTransaction);
 apiRouter.get('/api/v1/transaction/:id', controllers.api.v1.transactionController.handleGetTransaction);
 apiRouter.delete('/api/v1/transaction/:id', controllers.api.v1.transactionController.handleDeleteTransaction);
 
+//notification
+apiRouter.put('/api/v1/notification/:id', controllers.api.v1.notificationController.handleUpdateNotification);
 
 apiRouter.use(controllers.api.main.onLost);
 apiRouter.use(controllers.api.main.onError);
