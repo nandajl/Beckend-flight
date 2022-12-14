@@ -47,25 +47,18 @@ apiRouter.get('/api/v1/ticket/:id', controllers.api.v1.ticketController.handleGe
 apiRouter.delete('/api/v1/ticket/:id', controllers.api.v1.ticketController.handleDeleteTicket);
 
 //wishlist routes
-apiRouter.get("/api/v1/wishlist", controllers.api.v1.wishlistController.handleListWishlist);
+apiRouter.get('/api/v1/wishlist', controllers.api.v1.wishlistController.handleListWishlist);
 apiRouter.post('/api/v1/wishlist', controllers.api.v1.wishlistController.handleCreateWishlist);
-apiRouter.put("/api/v1/wishlist/:id", controllers.api.v1.wishlistController.handleUpdateWishlist);
-apiRouter.get("/api/v1/wishlist/:id", controllers.api.v1.wishlistController.handleGetWishlist);
-apiRouter.delete("/api/v1/wishlist/:id", controllers.api.v1.wishlistController.handleDeleteWishlist);
+apiRouter.put('/api/v1/wishlist/:id', controllers.api.v1.wishlistController.handleUpdateWishlist);
+apiRouter.get('/api/v1/wishlist/:id', controllers.api.v1.wishlistController.handleGetWishlist);
+apiRouter.delete('/api/v1/wishlist/:id', controllers.api.v1.wishlistController.handleDeleteWishlist);
 
 // airport
-apiRouter.post('/api/vi/airport', controllers.api.v1.airportConroller.handleCreateAirport);
-apiRouter.put('/api/vi/airport/:id', controllers.api.v1.airportConroller.handleUpdateAirport);
-apiRouter.get('/api/vi/airport', controllers.api.v1.airportConroller.handleGetAllAirport);
-apiRouter.get('/api/vi/airport/:id', controllers.api.v1.airportConroller.handleGetByPk);
-apiRouter.delete('/api/vi/airport/:id', controllers.api.v1.airportConroller.handleDeleteAirport);
-
-// flight
-apiRouter.get('/api/vi/flight', controllers.api.v1.flightContoller.handleGettAllFliht);
-apiRouter.post('/api/vi/flight', controllers.api.v1.flightContoller.handleCreateFligh);
-apiRouter.put('/api/vi/flight/:id', controllers.api.v1.flightContoller.handleUpdateFlight);
-apiRouter.get('/api/vi/flight/:id', controllers.api.v1.flightContoller.handleGetByPk);
-apiRouter.delete('/api/vi/flight/:id', controllers.api.v1.flightContoller.handleDeleteFlight);
+apiRouter.post('/api/v1/airport', controllers.api.v1.airportConroller.handleCreateAirport);
+apiRouter.put('/api/v1/airport/:id', controllers.api.v1.airportConroller.handleUpdateAirport);
+apiRouter.get('/api/v1/airport', controllers.api.v1.airportConroller.handleGetAllAirport);
+apiRouter.get('/api/v1/airport/:id', controllers.api.v1.airportConroller.handleGetByPk);
+apiRouter.delete('/api/v1/airport/:id', controllers.api.v1.airportConroller.handleDeleteAirport);
 
 // transaction
 apiRouter.get('/api/v1/transaction', controllers.api.v1.transactionController.handleListTransaction);
@@ -76,6 +69,14 @@ apiRouter.delete('/api/v1/transaction/:id', controllers.api.v1.transactionContro
 
 //notification
 apiRouter.put('/api/v1/notification/:id', controllers.api.v1.notificationController.handleUpdateNotification);
+
+
+// flight
+apiRouter.get('/api/v1/flight', controllers.api.v1.flightContoller.handleGettAllFliht);
+apiRouter.post('/api/v1/flight', controllers.api.v1.flightContoller.handleCreateFligh);
+apiRouter.put('/api/v1/flight/:id', controllers.api.v1.flightContoller.handleUpdateFlight);
+apiRouter.get('/api/v1/flight/:id', controllers.api.v1.flightContoller.handleGetByPk);
+apiRouter.delete('/api/v1/flight/:id', controllers.api.v1.flightContoller.handleDeleteFlight);
 
 apiRouter.use(controllers.api.main.onLost);
 apiRouter.use(controllers.api.main.onError);

@@ -2,7 +2,9 @@ const { Flight } = require('../models');
 
 module.exports = {
   getAll() {
-    return Flight.findAll();
+    return Flight.findAll({
+      include: [{ all: true, nested: true }],
+    });
   },
 
   getTotalCount() {
