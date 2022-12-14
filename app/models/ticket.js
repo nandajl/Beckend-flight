@@ -13,6 +13,9 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Ticket.hasMany(models.Wishlist, {
         foreignKey: 'ticket_id'
+      }),
+      Ticket.hasMany(models.Transaction, {
+        foreignKey: 'ticket_id'
       })
     }
   }

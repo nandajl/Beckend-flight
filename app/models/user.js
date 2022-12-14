@@ -13,6 +13,9 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       User.hasMany(models.Wishlist, {
         foreignKey: 'user_id'
+      }),
+      User.hasMany(models.Transaction, {
+        foreignKey: 'user_id'
       })
     }
   }
