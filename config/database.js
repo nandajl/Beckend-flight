@@ -1,5 +1,5 @@
 /** Destruct environment variable to get database configuration */
-const { DB_USER = 'postgres', DB_PASSWORD = '12345', DB_HOST = '127.0.0.1', DB_NAME = 'takeoff_api', DB_PORT = '5432' } = process.env;
+const { DB_USER = 'postgres', DB_PASSWORD = 'oby', DB_HOST = '127.0.0.1', DB_NAME = 'takeoff_api', DB_PORT = '5432' } = process.env;
 
 module.exports = {
   development: {
