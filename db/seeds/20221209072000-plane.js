@@ -20,6 +20,35 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date(),
       },
+      {
+        name: 'Garuda',
+        capacity: 150,
+        status: 'Ready',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: 'Citylink',
+        capacity: 100,
+        status: 'Ready',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: 'Lion',
+        capacity: 150,
+        status: 'Ready',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: 'Batik',
+        capacity: 200,
+        status: 'Ready',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+
     ]);
   },
 

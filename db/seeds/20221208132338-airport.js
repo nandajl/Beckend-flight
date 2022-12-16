@@ -20,6 +20,41 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date(),
       },
+      {
+        name: 'Sultan Syarif Kasim II',
+        city: 'Pekanbaru',
+        country: 'Indonesia',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: 'Minangkabau Internasional Airport',
+        city: 'Padang',
+        country: 'Indonesia',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: 'Soekarno-Hatta',
+        city: 'Jakarta',
+        country: 'Indonesia',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: 'Haluoleo',
+        city: 'Kendari',
+        country: 'Indonesia',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: 'Juanda International Airport',
+        city: 'Surabaya',
+        country: 'Indonesia',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
     ]);
   },
 
