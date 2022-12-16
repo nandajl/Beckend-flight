@@ -6,11 +6,10 @@
   },
   "servers": [
     {
-      "url": "https://virtserver.swaggerhub.com/OBYKAO26_1/template/1.0.0",
-      "description": "SwaggerHub API Auto Mocking"
+      "url": "https://beckend-takeoff-production.up.railway.app/api-docs"
     },
     {
-      "url": "https://localhost:8000/"
+      "url": "https://localhost:8000/api-docs"
     }
   ],
   "paths": {
@@ -98,7 +97,7 @@
         }
       }
     },
-    "/auth/whoim": {
+    "/api/v1/user": {
       "get": {
         "tags": ["Auth"],
         "responses": {
@@ -153,7 +152,7 @@
         }
       }
     },
-    "/api/v1/user/{id}": {
+    "/api/v1/users/{id}": {
       "put": {
         "tags": ["Users"],
         "description":"Update data one user \n\n Allowed role: Buyer, Admin",
@@ -796,9 +795,294 @@
           }
         }
       }
+    },
+    "/api/v1/flight": {
+      "get": {
+        "tags": ["Flight"],
+        "description":"Get data all flight \n\n Allowed role: Admin, Buyer",
+        "responses": {
+          "200": {
+            "description": "A success full respones",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/res-list-flight"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/general-error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/flight{id}": {
+      "get": {
+        "tags": ["Flight"],
+        "description":"Get detail one data flight by id \n\n Allowed role: Buyer, Admin",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A success full response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/res-flight"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/general-error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Flight"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A success full response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/res-delete"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/general-error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/transaction": {
+      "get": {
+        "tags": ["Transaction"],
+        "description":"Get data all transaction \n\n Allowed role: Admin, Buyer",
+        "responses": {
+          "200": {
+            "description": "A success full respones",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/res-list-transaction"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/general-error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Transaction"],
+        "description":"Create data transaction \n\n Allowed role: Admin",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/req-transaction"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "A success full respones",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/res-transaction"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/general-error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/transaction{id}": {
+      "get": {
+        "tags": ["Transaction"],
+        "description":"Get detail one data transaction by id \n\n Allowed role: Buyer, Admin",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A success full response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/res-transaction"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/general-error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Transaction"],
+        "description":"Delete one data transaction by id \n\n Allowed role: Admin",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A success full response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/res-delete"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/general-error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/notification/{id}": {
+      "put": {
+        "tags": ["Notification"],
+        "description":"Update data one notification isread",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A success full response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/res-notification"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/general-error"
+                }
+              }
+            }
+          }
+        }
+      }
     }
-
-
   },
   "components": {
     "schemas": {
@@ -857,10 +1141,12 @@
                 "type": "string"
               },
               "updatedAt":{
-                "type": "string"
+                "type": "string",
+                "format":"date-time"
               },
               "token":{
-                "type": "string"
+                "type": "string",
+                "format":"date-time"
               }
             }
           }
@@ -973,10 +1259,12 @@
                 "type":"string"
               },
               "createdAt":{
-                "type": "string"
+                "type": "string",
+                "format":"date-time"
               },
               "updatedAt":{
-                "type": "string"
+                "type": "string",
+                "format":"date-time"
               }
             }
           }
@@ -1023,10 +1311,12 @@
                 "type":"string"
               },
               "createdAt":{
-                "type": "string"
+                "type": "string",
+                "format":"date-time"
               },
               "updatedAt":{
-                "type": "string"
+                "type": "string",
+                "format":"date-time"
               }
             }
           },
@@ -1067,10 +1357,12 @@
                 "type":"string"
               },
               "createdAt":{
-                "type": "string"
+                "type": "string",
+                "format":"date-time"
               },
               "updatedAt":{
-                "type": "string"
+                "type": "string",
+                "format":"date-time"
               }
             }
           },
@@ -1111,10 +1403,12 @@
                 "type":"string"
               },
               "createdAt":{
-                "type": "string"
+                "type": "string",
+                "format":"date-time"
               },
               "updatedAt":{
-                "type": "string"
+                "type": "string",
+                "format":"date-time"
               }
             }
           }
@@ -1168,10 +1462,12 @@
                 "type":"integer"
               },
               "createdAt":{
-                "type": "string"
+                "type": "string",
+                "format":"date-time"
               },
               "updatedAt":{
-                "type": "string"
+                "type": "string",
+                "format":"date-time"
               },
               "Ticket": {
                 "type": "object"
@@ -1212,10 +1508,18 @@
                 "type":"string"
               },
               "createdAt":{
-                "type": "string"
+                "type": "string",
+                "format":"date-time"
               },
               "updatedAt":{
-                "type": "string"
+                "type": "string",
+                "format":"date-time"
+              },
+              "Ticket": {
+                "type": "object"
+              },
+              "User": {
+                "type": "object"
               }
             }
           }
@@ -1264,10 +1568,12 @@
                 "type":"string"
               },
               "createdAt":{
-                "type": "string"
+                "type": "string",
+                "format":"date-time"
               },
               "updatedAt":{
-                "type": "string"
+                "type": "string",
+                "format":"date-time"
               }
             }
           },
@@ -1308,10 +1614,251 @@
                 "type":"string"
               },
               "createdAt":{
-                "type": "string"
+                "type": "string",
+                "format":"date-time"
               },
               "updatedAt":{
-                "type": "string"
+                "type": "string",
+                "format":"date-time"
+              }
+            }
+          }
+        }
+      },
+      "res-list-flight": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "data": {
+            "type": "object",
+            "properties":{
+              "id":{
+                "type":"integer",
+                "example":"1"
+              },
+              "plane_id":{
+                "type":"integer"
+              },
+              "from_airport_id":{
+                "type":"integer"
+              },
+              "to_airport_id":{
+                "type":"integer"
+              },
+              "arrival_time":{
+                "type":"string",
+                "format":"date-time"
+              },
+              "departure":{
+                "type":"string",
+                "format":"date-time"
+              },
+              "createdAt":{
+                "type": "string",
+                "format":"date-time"
+              },
+              "updatedAt":{
+                "type": "string",
+                "format":"date-time"
+              },
+              "Plane": {
+                "type": "object"
+              },
+              "From": {
+                "type": "object"
+              },
+              "To": {
+                "type": "object"
+              }
+            }
+          },
+          "total":{
+            "type":"object",
+            "properties":{
+              "total":{
+                "type":"integer",
+                "example":"1"
+              }
+            }
+          }
+        }
+      },
+      "res-flight": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "data": {
+            "type": "object",
+            "properties":{
+              "id":{
+                "type":"integer",
+                "example":"1"
+              },
+              "plane_id":{
+                "type":"integer"
+              },
+              "from_airport_id":{
+                "type":"integer"
+              },
+              "to_airport_id":{
+                "type":"integer"
+              },
+              "arrival_time":{
+                "type":"date",
+                "format":"date-time"
+              },
+              "departure":{
+                "type":"date",
+                "format":"date-time"
+              },
+              "createdAt":{
+                "type": "string",
+                "format":"date-time"
+              },
+              "updatedAt":{
+                "type": "string",
+                "format":"date-time"
+              },
+              "Plane": {
+                "type": "object"
+              },
+              "From": {
+                "type": "object"
+              },
+              "To": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      },
+      "req-transaction": {
+        "type": "object",
+          "properties":{
+            "ticket_id":{
+              "type":"integer"
+            },
+            "user_id":{
+              "type":"integer"
+            },
+            "promo_id":{
+              "type":"integer"
+            }
+          }
+      },
+      "res-list-transaction": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "data": {
+            "type": "object",
+            "properties":{
+              "id":{
+                "type":"integer",
+                "example":"1"
+              },
+              "ticket_id":{
+                "type":"integer"
+              },
+              "user_id":{
+                "type":"integer"
+              },
+              "promo_id":{
+                "type":"integer"
+              },
+              "createdAt":{
+                "type": "string",
+                "format":"date-time"
+              },
+              "updatedAt":{
+                "type": "string",
+                "format":"date-time"
+              },
+              "Ticket": {
+                "type": "object"
+              },
+              "User": {
+                "type": "object"
+              },
+              "Promo": {
+                "type": "object"
+              }
+            }
+          },
+          "total":{
+            "type":"object",
+            "properties":{
+              "total":{
+                "type":"integer",
+                "example":"1"
+              }
+            }
+          }
+        }
+      },
+      "res-transaction": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "data": {
+            "type": "object",
+            "properties":{
+              "id":{
+                "type":"integer",
+                "example":"1"
+              },
+              "ticket_id":{
+                "type":"integer"
+              },
+              "user_id":{
+                "type":"integer"
+              },
+              "promo_id":{
+                "type":"integer"
+              },
+              "createdAt":{
+                "type": "string",
+                "format":"date-time"
+              },
+              "updatedAt":{
+                "type": "string",
+                "format":"date-time"
+              },
+              "Ticket": {
+                "type": "object"
+              },
+              "User": {
+                "type": "object"
+              },
+              "Promo": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      },
+      "res-notification": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "data": {
+            "type": "object",
+            "properties":{
+              "isReadAdmin":{
+                "type":"boolean"
+              },
+              "isReadBuyer":{
+                "type":"boolean"
               }
             }
           }
