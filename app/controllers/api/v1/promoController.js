@@ -4,7 +4,8 @@ module.exports = {
   async handleCreatePromo(req, res) {
     try {
       const body = req.body;
-      const promo = await promoService.create(body);
+      const image = req.file
+      const promo = await promoService.create(body, image);
       res.status(201).json({
         status: 'Ok',
         data: promo,
@@ -20,7 +21,6 @@ module.exports = {
   async handleGetAllPromo(req, res) {
     try {
       const promo = await promoService.getAll();
-      console.log(promo);
       res.status(201).json({
         status: 'Ok',
         data: promo,
@@ -36,9 +36,9 @@ module.exports = {
   async handleUpdatePromo(req, res) {
     try {
       const body = req.body;
+      const image = req.file;
       const param = req.params.id;
-      console.log(param);
-      const promo = await promoService.update(body, param);
+      const promo = await promoService.update(body, param, image);
       res.status(201).json({
         status: 'OK',
         message: promo,
