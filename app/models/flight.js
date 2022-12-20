@@ -21,11 +21,11 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'plane_id',
       }),
       Flight.hasMany(models.Ticket, {
-        as: 'departure_plane',
+        as: 'departure_flight',
         foreignKey: 'flight_id'
       })
       Flight.hasMany(models.Ticket, {
-        as: 'return_plane',
+        as: 'return_flight',
         foreignKey: 'return_flight_id'
       })
     }

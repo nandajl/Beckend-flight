@@ -87,4 +87,27 @@ module.exports = {
       });
     }
   },
+
+  async handleSearchFlight(req, res){
+    try {
+        const body = req.body
+        const {from_airport_id, to_airport_id, departing, returning}  = body
+        const condition = {
+          from_airport_id,
+          to_airport_id,
+          departing,
+          returning
+        }
+        const flightResult = await flightService.findFlight(condition)
+        res.status(201).json({
+          status: 'OK',
+          data: flightResult,
+        });
+    } catch (err) {
+      res.status(400).json({
+        status: 'FAIL',
+        messange: err.messange,
+      });
+    }
+}
 };

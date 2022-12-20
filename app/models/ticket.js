@@ -18,11 +18,11 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'ticket_id'
       }),
       Ticket.belongsTo(models.Flight, {
-        as: 'departure_plane',
+        as: 'departure_flight',
         foreignKey: 'flight_id',
       }),
       Ticket.belongsTo(models.Flight, {
-        as: 'return_plane',
+        as: 'return_flight',
         foreignKey: 'return_flight_id',
       })
     }

@@ -81,6 +81,10 @@ apiRouter.get('/api/v1/transaction/history/:id', controllers.api.v1.transactionC
 apiRouter.put('/api/v1/notification/:id', controllers.api.v1.notificationController.handleUpdateNotification);
 apiRouter.get('/api/v1/notification/user/:id', controllers.api.v1.notificationController.handleFindNotification);
 
+//search flight
+apiRouter.post('/api/v1/flight/search', controllers.api.v1.flightContoller.handleSearchFlight);
+
+
 
 apiRouter.use(controllers.api.main.onLost);
 apiRouter.use(controllers.api.main.onError);

@@ -3,7 +3,7 @@ const { Flight } = require('../models');
 module.exports = {
   getAll() {
     return Flight.findAll({
-      include: [{ all: true, nested: true }],
+      include: [{ all: true }],
     });
   },
 
@@ -26,4 +26,8 @@ module.exports = {
   delete(id) {
     return Flight.destroy({ where: { id } });
   },
+
+  findFlight(condition){
+    return Flight.findAll({where: condition})
+},
 };
