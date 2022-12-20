@@ -13,6 +13,10 @@ module.exports = {
         return wishlistRepository.getWishlist(id)
     },
 
+    findWishlist(id){
+        return wishlistRepository.findUserWishlist({user_id : id})
+    },
+
     async getAllWishlist(){
         try {
             const wishlists = await wishlistRepository.getAllWishlists()

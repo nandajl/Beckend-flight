@@ -15,12 +15,16 @@ module.exports = {
 
     getAllWishlists(){
         return Wishlist.findAll({
-            include: [ { all: true, nested: true } ]
+            include: [ { all: true } ]
         })
     },
 
     getWishlist(id){
         return Wishlist.findByPk(id)
+    },
+
+    findUserWishlist(condition){
+        return Wishlist.findAll({where: condition})
     },
 
     delete(id){

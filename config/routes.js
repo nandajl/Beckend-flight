@@ -51,6 +51,7 @@ apiRouter.get('/api/v1/wishlist', controllers.api.v1.wishlistController.handleLi
 apiRouter.post('/api/v1/wishlist', controllers.api.v1.wishlistController.handleCreateWishlist);
 apiRouter.put('/api/v1/wishlist/:id', controllers.api.v1.wishlistController.handleUpdateWishlist);
 apiRouter.get('/api/v1/wishlist/:id', controllers.api.v1.wishlistController.handleGetWishlist);
+apiRouter.get('/api/v1/wishlist/user/:id', controllers.api.v1.wishlistController.handleFindWishlist);
 apiRouter.delete('/api/v1/wishlist/:id', controllers.api.v1.wishlistController.handleDeleteWishlist);
 
 // airport
@@ -77,6 +78,7 @@ apiRouter.delete('/api/v1/transaction/:id', controllers.api.v1.transactionContro
 apiRouter.get('/api/v1/transaction/history/:id', controllers.api.v1.transactionController.handleFindTransaction);
 
 //notification
+apiRouter.get('/api/v1/notification/user/:id', controllers.api.v1.notificationController.handleFindNotification);
 apiRouter.put('/api/v1/notification/:id', controllers.api.v1.notificationController.handleUpdateNotification);
 
 

@@ -14,15 +14,17 @@ module.exports = {
     },
 
     getAllTransactions(){
-        return Transaction.findAll()
+        return Transaction.findAll({
+            include: [ { all: true } ]
+        })
     },
 
     getTransaction(id){
         return Transaction.findByPk(id)
     },
 
-    findTransaction(condition){
-        return Transaction.findOne({where: condition})
+    findUserTransaction(condition){
+        return Transaction.findAll({where: condition})
     },
 
     delete(id){

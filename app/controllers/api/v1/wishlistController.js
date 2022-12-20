@@ -67,6 +67,22 @@ module.exports = {
         }
     },
 
+    async handleFindWishlist(req, res){
+        try {
+            const id = req.params.id
+            const wishlists = await wishlistService.findWishlist(id)
+            res.status(201).json({
+                status: "OK",
+                data: wishlists
+            })
+        } catch (err) {
+            res.status(400).json({
+                status: "FAIL",
+                message: err.message
+            })
+        }
+    },
+
     async handleDeleteWishlist(req, res){
         try {
             const id = req.params.id
