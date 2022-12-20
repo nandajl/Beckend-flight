@@ -74,6 +74,7 @@ apiRouter.post('/api/v1/transaction', controllers.api.v1.transactionController.h
 apiRouter.put('/api/v1/transaction/:id', controllers.api.v1.transactionController.handleUpdateTransaction);
 apiRouter.get('/api/v1/transaction/:id', controllers.api.v1.transactionController.handleGetTransaction);
 apiRouter.delete('/api/v1/transaction/:id', controllers.api.v1.transactionController.handleDeleteTransaction);
+apiRouter.get('/api/v1/transaction/history/:id', controllers.api.v1.transactionController.handleFindTransaction);
 
 //notification
 apiRouter.put('/api/v1/notification/:id', controllers.api.v1.notificationController.handleUpdateNotification);

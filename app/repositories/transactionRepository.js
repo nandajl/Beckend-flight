@@ -21,6 +21,10 @@ module.exports = {
         return Transaction.findByPk(id)
     },
 
+    findTransaction(condition){
+        return Transaction.findOne({where: condition})
+    },
+
     delete(id){
         return Transaction.destroy({
             where : {

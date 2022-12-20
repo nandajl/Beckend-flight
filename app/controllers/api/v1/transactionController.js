@@ -8,7 +8,6 @@ module.exports = {
             const body = req.body
             console.log(body)
             const transaction = await transactionService.create(body)
-            console.log("transaction id = ", transaction.dataValues);
             if (transaction) {
                 try {
                     const notificationBuyerBody = {
@@ -68,6 +67,22 @@ module.exports = {
                 status: "OK",
                 data: data,
                 total: count
+            })
+        } catch (err) {
+            res.status(400).json({
+                status: "FAIL",
+                message: err.message
+            })
+        }
+    },
+
+    async handleFindTransaction(req, res){
+        try {
+            const id = req.params.id
+            const transactions = await transactionService.findTransaction(id)
+            res.status(201).json({
+                status: "OK",
+                data: transactions
             })
         } catch (err) {
             res.status(400).json({

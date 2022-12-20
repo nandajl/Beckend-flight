@@ -12,6 +12,10 @@ module.exports = {
     getTransaction(id){
         return transactionRepository.getTransaction(id)
     },
+ 
+    findTransaction(id){
+        return transactionRepository.findTransaction({user_id : id})
+    },
 
     async getAllTransaction(){
         try {
