@@ -1,10 +1,8 @@
-const authService = require('../../app/services/authService');
-
-('use strict');
+'use strict';
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up(queryInterface, Sequelize) {
+  async up (queryInterface, Sequelize) {
     /**
      * Add seed commands here.
      *
@@ -13,34 +11,36 @@ module.exports = {
      *   name: 'John Doe',
      *   isBetaMember: false
      * }], {});
-     */
-
-    return queryInterface.bulkInsert('Users', [
+    */
+    return queryInterface.bulkInsert('Tickets', [
       {
-        username: 'admin',
-        email: 'admin@mail.com',
-        password: await authService.encryptPassword('12345'),
-        role: 'admin',
+        flight_id: 1,
+        type: "Economi",
+        price: 600000,
+        category: "One way",
+        desc: "Penerbangan dari bandara a ke b",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
-        username: 'buyer',
-        email: 'buyer@mail.com',
-        password: await authService.encryptPassword('12345'),
-        role: 'buyer',
+        flight_id: 1,
+        return_flight_id: 2,
+        type: "Economi",
+        price: 1200000,
+        category: "Round trip",
+        desc: "Penerbangan pulang pergi dari bandara a ke b",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
     ]);
   },
 
-  async down(queryInterface, Sequelize) {
+  async down (queryInterface, Sequelize) {
     /**
      * Add commands to revert seed here.
      *
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-  },
+  }
 };
