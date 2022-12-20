@@ -39,7 +39,7 @@ module.exports = {
       arrival_time: {
         type: Sequelize.DATE,
       },
-      depature: {
+      departure_time: {
         type: Sequelize.DATE,
       },
       createdAt: {

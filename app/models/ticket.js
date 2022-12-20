@@ -16,13 +16,23 @@ module.exports = (sequelize, DataTypes) => {
       }),
       Ticket.hasMany(models.Transaction, {
         foreignKey: 'ticket_id'
+      }),
+      Ticket.belongsTo(models.Flight, {
+        as: 'departure_plane',
+        foreignKey: 'flight_id',
+      }),
+      Ticket.belongsTo(models.Flight, {
+        as: 'return_plane',
+        foreignKey: 'return_flight_id',
       })
     }
   }
   Ticket.init({
     flight_id: DataTypes.INTEGER,
+    return_flight_id: DataTypes.INTEGER,
     type: DataTypes.STRING,
     price: DataTypes.INTEGER,
+    category: DataTypes.STRING,
     desc: DataTypes.TEXT
   }, {
     sequelize,

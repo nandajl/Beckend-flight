@@ -26,7 +26,9 @@ module.exports = {
     },
 
     getAllTicket(){
-        return Ticket.findAll()
+        return Ticket.findAll({
+            include: [{ all: true, nested: true }],
+          })
     },
 
     getTotalCount(){

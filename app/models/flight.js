@@ -13,13 +13,21 @@ module.exports = (sequelize, DataTypes) => {
         as: 'from',
         foreignKey: 'from_airport_id',
       }),
-        Flight.belongsTo(models.Airport, {
-          as: 'to',
-          foreignKey: 'to_airport_id',
-        }),
-        Flight.belongsTo(models.Plane, {
-          foreignKey: 'plane_id',
-        });
+      Flight.belongsTo(models.Airport, {
+        as: 'to',
+        foreignKey: 'to_airport_id',
+      }),
+      Flight.belongsTo(models.Plane, {
+        foreignKey: 'plane_id',
+      }),
+      Flight.hasMany(models.Ticket, {
+        as: 'departure_plane',
+        foreignKey: 'flight_id'
+      })
+      Flight.hasMany(models.Ticket, {
+        as: 'return_plane',
+        foreignKey: 'return_flight_id'
+      })
     }
   }
   Flight.init(
@@ -28,7 +36,7 @@ module.exports = (sequelize, DataTypes) => {
       from_airport_id: DataTypes.INTEGER,
       to_airport_id: DataTypes.INTEGER,
       arrival_time: DataTypes.DATE,
-      depature: DataTypes.DATE,
+      departure_time: DataTypes.DATE,
     },
     {
       sequelize,

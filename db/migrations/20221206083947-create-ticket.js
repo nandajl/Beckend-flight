@@ -10,13 +10,31 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       flight_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Flights',
+          key: 'id',
+        },
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
+      },
+      return_flight_id: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Flights',
+          key: 'id',
+        },
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
       },
       type: {
         type: Sequelize.STRING
       },
       price: {
         type: Sequelize.INTEGER
+      },
+      category: {
+        type: Sequelize.STRING
       },
       desc: {
         type: Sequelize.TEXT
