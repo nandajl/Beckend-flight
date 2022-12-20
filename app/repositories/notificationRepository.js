@@ -31,6 +31,10 @@ module.exports = {
         })
     },
 
+    findUserNotification(condition){
+        return Notification.findAll({where: condition})
+    },
+
     getTotalCount(){
         return Notification.count()
     }

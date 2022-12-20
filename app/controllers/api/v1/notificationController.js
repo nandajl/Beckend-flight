@@ -18,5 +18,21 @@ module.exports = {
                 message: err.message
             })
         }
-    }
+    },
+
+    async handleFindNotification(req, res){
+        try {
+            const id = req.params.id
+            const notifications = await notificationService.findNotification(id)
+            res.status(201).json({
+                status: "OK",
+                data: notifications
+            })
+        } catch (err) {
+            res.status(400).json({
+                status: "FAIL",
+                message: err.message
+            })
+        }
+    },
 }

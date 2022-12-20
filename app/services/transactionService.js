@@ -14,7 +14,7 @@ module.exports = {
     },
  
     findTransaction(id){
-        return transactionRepository.findUserTransaction(id)
+        return transactionRepository.findUserTransaction({user_id: id})
     },
 
     async getAllTransaction(){

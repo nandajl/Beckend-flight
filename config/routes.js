@@ -78,8 +78,8 @@ apiRouter.delete('/api/v1/transaction/:id', controllers.api.v1.transactionContro
 apiRouter.get('/api/v1/transaction/history/:id', controllers.api.v1.transactionController.handleFindTransaction);
 
 //notification
-apiRouter.get('/api/v1/notification/user/:id', controllers.api.v1.notificationController.handleFindNotification);
 apiRouter.put('/api/v1/notification/:id', controllers.api.v1.notificationController.handleUpdateNotification);
+apiRouter.get('/api/v1/notification/user/:id', controllers.api.v1.notificationController.handleFindNotification);
 
 
 apiRouter.use(controllers.api.main.onLost);

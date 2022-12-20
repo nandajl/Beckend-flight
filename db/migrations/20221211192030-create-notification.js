@@ -18,11 +18,17 @@ module.exports = {
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE'
       },
+      user_id: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Users',
+          key: 'id'
+        },
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
+      },
       message: {
         type: Sequelize.TEXT
-      },
-      role: {
-        type: Sequelize.STRING
       },
       isRead: {
         type: Sequelize.BOOLEAN

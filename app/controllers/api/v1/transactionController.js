@@ -12,18 +12,18 @@ module.exports = {
                 try {
                     const notificationBuyerBody = {
                         transaction_id : transaction.dataValues.id,
+                        user_id: transaction.dataValues.user_id, 
                         message: "Booking Success",
-                        role: "buyer",
                         isRead: false
                     }
                     const notificationAdminBody = {
                         transaction_id : transaction.dataValues.id,
+                        user_id : 1,
                         message: "There are new transaction",
-                        role: "admin",
                         isRead: false
                     }
-                    const notification1 = await notificationService.create(notificationBuyerBody)   
-                    const notification2 = await notificationService.create(notificationAdminBody)   
+                    await notificationService.create(notificationBuyerBody)   
+                    await notificationService.create(notificationAdminBody)   
                 } catch (err) {
                     res.status(400).json({
                         status: "FAIL",

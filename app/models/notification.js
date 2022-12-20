@@ -13,13 +13,16 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Notification.belongsTo(models.Transaction, {
         foreignKey: 'transaction_id'
+      }),
+      Notification.belongsTo(models.User, {
+        foreignKey: 'user_id'
       })
     }
   }
   Notification.init({
     transaction_id: DataTypes.INTEGER,
+    user_id: DataTypes.INTEGER,
     message: DataTypes.TEXT,
-    role: DataTypes.STRING,
     isRead: DataTypes.BOOLEAN
   }, {
     sequelize,

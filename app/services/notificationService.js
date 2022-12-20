@@ -26,6 +26,10 @@ module.exports = {
         }
     },
 
+    findNotification(id){
+        return notificationRepository.findUserNotification({user_id : id})
+    },
+
     delete(id){
         return notificationRepository.delete(id)
     }
