@@ -23,10 +23,11 @@ module.exports = {
     async handleFindNotification(req, res){
         try {
             const id = req.params.id
-            const notifications = await notificationService.findNotification(id)
+            const { data, count } = await notificationService.findNotification(id)
             res.status(201).json({
                 status: "OK",
-                data: notifications
+                data: data,
+                count: count
             })
         } catch (err) {
             res.status(400).json({

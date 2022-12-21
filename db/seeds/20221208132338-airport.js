@@ -16,6 +16,7 @@ module.exports = {
       {
         name: 'Kertajati',
         city: 'Majalengka',
+        city_code: 'MJK',
         country: 'Indonesia',
         createdAt: new Date(),
         updatedAt: new Date(),
@@ -23,6 +24,7 @@ module.exports = {
       {
         name: 'Sultan Syarif Kasim II',
         city: 'Pekanbaru',
+        city_code: 'PKU',
         country: 'Indonesia',
         createdAt: new Date(),
         updatedAt: new Date(),
@@ -30,6 +32,7 @@ module.exports = {
       {
         name: 'Minangkabau Internasional Airport',
         city: 'Padang',
+        city_code: 'PDG',
         country: 'Indonesia',
         createdAt: new Date(),
         updatedAt: new Date(),
@@ -37,6 +40,7 @@ module.exports = {
       {
         name: 'Soekarno-Hatta',
         city: 'Jakarta',
+        city_code: 'JKT',
         country: 'Indonesia',
         createdAt: new Date(),
         updatedAt: new Date(),
@@ -44,6 +48,7 @@ module.exports = {
       {
         name: 'Haluoleo',
         city: 'Kendari',
+        city_code: 'KDI',
         country: 'Indonesia',
         createdAt: new Date(),
         updatedAt: new Date(),
@@ -51,6 +56,7 @@ module.exports = {
       {
         name: 'Juanda International Airport',
         city: 'Surabaya',
+        city_code: 'SBY',
         country: 'Indonesia',
         createdAt: new Date(),
         updatedAt: new Date(),

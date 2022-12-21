@@ -21,12 +21,7 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'plane_id',
       }),
       Flight.hasMany(models.Ticket, {
-        as: 'departure_flight',
         foreignKey: 'flight_id'
-      })
-      Flight.hasMany(models.Ticket, {
-        as: 'return_flight',
-        foreignKey: 'return_flight_id'
       })
     }
   }

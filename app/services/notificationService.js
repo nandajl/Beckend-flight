@@ -26,8 +26,17 @@ module.exports = {
         }
     },
 
-    findNotification(id){
-        return notificationRepository.findUserNotification({user_id : id})
+    async findNotification(id){
+        try {
+            const notifications = await  notificationRepository.findUserNotification({user_id : id})
+            const count = await notificationRepository.getTotalCount({user_id : id})
+            return {
+                data: notifications,
+                count: count
+            }
+        } catch (err) {
+            throw err
+        }
     },
 
     delete(id){

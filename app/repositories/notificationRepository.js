@@ -35,7 +35,7 @@ module.exports = {
         return Notification.findAll({where: condition})
     },
 
-    getTotalCount(){
-        return Notification.count()
+    getTotalCount(condition){
+        return Notification.count({where: condition})
     }
 }

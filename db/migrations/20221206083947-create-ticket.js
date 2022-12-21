@@ -18,26 +18,23 @@ module.exports = {
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE',
       },
-      return_flight_id: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'Flights',
-          key: 'id',
-        },
-        onDelete: 'CASCADE',
-        onUpdate: 'CASCADE',
-      },
       type: {
         type: Sequelize.STRING
       },
       price: {
         type: Sequelize.INTEGER
       },
-      category: {
+      cabin_baggage: {
+        type: Sequelize.STRING
+      },
+      baggage: {
         type: Sequelize.STRING
       },
       desc: {
         type: Sequelize.TEXT
+      },
+      photo: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
