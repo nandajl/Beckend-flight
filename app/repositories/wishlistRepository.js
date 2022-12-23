@@ -24,7 +24,10 @@ module.exports = {
     },
 
     findUserWishlist(condition){
-        return Wishlist.findAll({where: condition})
+        return Wishlist.findAll({
+            include: [ { all: true } ],
+            where: condition
+        })
     },
 
     delete(id){

@@ -1348,12 +1348,24 @@
                 "type":"integer"
               },
               "type":{
-                "type":"string"
+                "type":"string",
+                "example":"economi, bussines"
               },
               "price":{
-                "type":"string"
+                "type":"integer"
+              },
+              "cabin_baggage":{
+                "type":"string",
+                "example":"7 KG"
+              },
+              "baggage":{
+                "type":"string",
+                "example":"20 KG"
               },
               "desc":{
+                "type":"string"
+              },
+              "photo":{
                 "type":"string"
               },
               "createdAt":{
@@ -1394,12 +1406,24 @@
                 "type":"integer"
               },
               "type":{
-                "type":"string"
+                "type":"string",
+                "example":"economi, bussines"
               },
               "price":{
-                "type":"string"
+                "type":"integer"
+              },
+              "cabin_baggage":{
+                "type":"string",
+                "example":"7 KG"
+              },
+              "baggage":{
+                "type":"string",
+                "example":"20 KG"
               },
               "desc":{
+                "type":"string"
+              },
+              "photo":{
                 "type":"string"
               },
               "createdAt":{
@@ -1424,9 +1448,18 @@
               "type":"string"
             },
             "price":{
+              "type":"integer"
+            },
+            "cabin_baggage":{
+              "type":"string"
+            },
+            "baggage":{
               "type":"string"
             },
             "desc":{
+              "type":"string"
+            },
+            "photo":{
               "type":"string"
             }
           }

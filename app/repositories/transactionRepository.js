@@ -24,7 +24,10 @@ module.exports = {
     },
 
     findUserTransaction(condition){
-        return Transaction.findAll({where: condition})
+        return Transaction.findAll({
+            where: condition,
+            include: [ { all: true } ]
+        })
     },
 
     delete(id){
