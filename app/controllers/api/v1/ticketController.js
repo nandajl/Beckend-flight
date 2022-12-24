@@ -4,7 +4,8 @@ module.exports = {
     async handleCreateTicket(req, res){
         try {
             const body = req.body
-            const ticket = await ticketService.create(body)
+            const image = req.file
+            const ticket = await ticketService.create(body, image)
             res.status(201).json({
                 status: "OK",
                 data: ticket
@@ -21,7 +22,8 @@ module.exports = {
         try {
             const body = req.body
             const id = req.params.id
-            const ticket = await ticketService.update(id, body)
+            const image = req.file
+            const ticket = await ticketService.update(id, body, image)
             res.status(201).json({
                 status: "OK",
                 data: body

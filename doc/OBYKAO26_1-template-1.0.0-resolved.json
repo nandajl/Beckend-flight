@@ -10,6 +10,9 @@
     },
     {
       "url": "https://localhost:8000/api-docs"
+    },
+    {
+      "url": "https://beckend-takeoff-production-46fc.up.railway.app/api-docs"
     }
   ],
   "paths": {
@@ -607,6 +610,46 @@
         }
       }
     },
+    "/api/v1/wishlist/user/{id}": {
+      "get": {
+        "tags": ["Wishlist"],
+        "description":"Get detail one data wishlist user by user id \n\n Allowed role: Buyer, Admin",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A success full response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/res-wishlist"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/general-error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/promo": {
       "get": {
         "tags": ["Promo"],
@@ -1026,6 +1069,46 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/res-delete"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/general-error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/transaction/history/{id}": {
+      "get": {
+        "tags": ["Transaction"],
+        "description":"Get user history transaction by user id \n\n Allowed role: Buyer, Admin",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A success full response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/res-transaction"
                 }
               }
             }
@@ -1866,7 +1949,9 @@
                 "format":"date-time"
               },
               "Ticket": {
-                "type": "object"
+                "schema": {
+                  "$ref": "#/components/schemas/res-ticket"
+                }
               },
               "User": {
                 "type": "object"
