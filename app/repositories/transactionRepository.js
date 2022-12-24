@@ -1,4 +1,4 @@
-const { Transaction } = require("../models")
+const { Transaction, Ticket, User, Promo, Airport, Plane } = require("../models")
 
 module.exports = {
     create(body){
@@ -26,7 +26,19 @@ module.exports = {
     findUserTransaction(condition){
         return Transaction.findAll({
             where: condition,
-            include: [ { all: true } ]
+            include: [ 
+                { model: Ticket,
+                  include: [{ model: Flight,
+                    include: [
+                      { model: Plane },
+                      { model: Airport, as: 'from' },
+                      { model: Airport, as: 'to' }
+                    ]  
+                  }]
+                },
+                { model: User },
+                { model: Promo },
+            ]
         })
     },
 

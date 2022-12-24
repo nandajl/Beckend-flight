@@ -1,4 +1,4 @@
-const { Wishlist } = require("../models")
+const { Wishlist, User, Ticket, Flight, Airport, Plane } = require("../models")
 
 module.exports = {
     create(body){
@@ -25,7 +25,20 @@ module.exports = {
 
     findUserWishlist(condition){
         return Wishlist.findAll({
-            include: [ { all: true } ],
+            include: [ 
+                { model:User },
+                { model:Ticket, 
+                  include: [
+                    { model: Flight,
+                      include: [
+                        { model: Plane },
+                        { model: Airport, as: 'from' },
+                        { model: Airport, as: 'to' }
+                      ]  
+                    }
+                  ]
+                },
+            ],
             where: condition
         })
     },
