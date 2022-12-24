@@ -1,4 +1,4 @@
-const { Transaction, Ticket, User, Promo, Airport, Plane } = require("../models")
+const { Transaction, Ticket, User, Promo, Airport, Plane, Flight } = require("../models")
 
 module.exports = {
     create(body){
