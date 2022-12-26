@@ -1,4 +1,4 @@
-const { Ticket } = require("../models")
+const { Ticket, Airport, Plane, Flight } = require("../models")
 
 module.exports = {
     create(body){
@@ -22,7 +22,15 @@ module.exports = {
     },
 
     getTicket(id){
-        return Ticket.findByPk(id)
+        return Ticket.findByPk(id, {
+            include: [{ model: Flight,
+                include: [
+                  { model: Plane },
+                  { model: Airport, as: 'from' },
+                  { model: Airport, as: 'to' }
+                ]  
+              }]
+        })
     },
 
     getAllTicket(){
