@@ -1,4 +1,4 @@
-const { Notification } = require("../models")
+const { Notification, User, Transaction, Ticket, Flight, Plane, Airport } = require("../models")
 
 module.exports = {
     create(body){
@@ -32,7 +32,22 @@ module.exports = {
     },
 
     findUserNotification(condition){
-        return Notification.findAll({where: condition})
+        return Notification.findAll({
+            where: condition,
+            include: [ 
+                { model: User }, 
+                { model: Transaction,
+                    include: [{ model: Ticket,
+                        include: [{ model: Flight,
+                          include: [
+                            { model: Plane },
+                            { model: Airport, as: 'from' },
+                            { model: Airport, as: 'to' }
+                          ]  
+                        }]}]
+                }, 
+            ]
+        })
     },
 
     getTotalCount(condition){
