@@ -78,4 +78,20 @@ module.exports = {
       });
     }
   },
+
+  async handleFindPromo(req,res){
+    try {
+      const { code } = req.body
+      const promo = await promoService.findPromo(code)
+      res.status(201).json({
+        status: 'OK',
+        data: promo,
+      });
+    } catch (err) {
+      res.status(400).json({
+        status: 'FAIL',
+        data: err.message,
+      });
+    }
+  }
 };

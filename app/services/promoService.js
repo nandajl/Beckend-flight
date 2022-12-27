@@ -62,4 +62,8 @@ module.exports = {
   delete(id) {
     return promoRepository.delete(id);
   },
+
+  findPromo(code){
+    return promoRepository.findPromo({ code: code })
+  }
 };

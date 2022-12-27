@@ -19,4 +19,8 @@ module.exports = {
   delete(id) {
     return Promo.destroy({ where: { id } });
   },
+
+  findPromo(condition){
+    return Promo.findOne({where: condition})
+  }
 };

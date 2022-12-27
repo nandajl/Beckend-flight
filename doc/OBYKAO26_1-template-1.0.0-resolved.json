@@ -714,6 +714,50 @@
         }
       }
     },
+    "/api/v1/promo/search": {
+      "post": {
+        "tags": ["Promo"],
+        "description":"Find data promo with code \n\n Allowed role: Buyer, Admin",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type":"object",
+                "properties": {
+                  "code":{
+                    "type":"string",
+                    "example":"FLY12"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "A success full respones",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/res-promo"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/general-error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/promo/{id}": {
       "put": {
         "tags": ["Promo"],
