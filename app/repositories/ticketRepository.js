@@ -35,7 +35,13 @@ module.exports = {
 
     getAllTicket(){
         return Ticket.findAll({
-            include: [{ all: true, nested: true }],
+            include: [{ model: Flight,
+                include: [
+                  { model: Plane },
+                  { model: Airport, as: 'from' },
+                  { model: Airport, as: 'to' }
+                ]  
+              }],
           })
     },
 
