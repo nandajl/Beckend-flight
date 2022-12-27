@@ -24,6 +24,7 @@ apiRouter.post('/api/v1/promo', cloudStorage.single('photo'), controllers.api.v1
 apiRouter.get('/api/v1/promo', controllers.api.v1.promoController.handleGetAllPromo);
 apiRouter.put('/api/v1/promo/:id', cloudStorage.single('photo'), controllers.api.v1.promoController.handleUpdatePromo);
 apiRouter.get('/api/v1/promo/:id', controllers.api.v1.promoController.handleGetByIdPromo);
+apiRouter.post('/api/v1/promo/search', controllers.api.v1.promoController.handleFindPromo);
 apiRouter.delete('/api/v1/promo/:id', controllers.api.v1.promoController.handleDeletePromo);
 
 //user Routes
