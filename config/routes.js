@@ -42,8 +42,8 @@ apiRouter.delete('/api/v1/planes/:id', controllers.api.v1.planeController.handle
 
 //ticket routes
 apiRouter.get('/api/v1/ticket', controllers.api.v1.ticketController.handleListTicket);
-apiRouter.post('/api/v1/ticket',cloudStorage.single('photo'), controllers.api.v1.ticketController.handleCreateTicket);
-apiRouter.put('/api/v1/ticket/:id',cloudStorage.single('photo'), controllers.api.v1.ticketController.handleUpdateTicket);
+apiRouter.post('/api/v1/ticket', cloudStorage.single('photo'), controllers.api.v1.ticketController.handleCreateTicket);
+apiRouter.put('/api/v1/ticket/:id', cloudStorage.single('photo'), controllers.api.v1.ticketController.handleUpdateTicket);
 apiRouter.get('/api/v1/ticket/:id', controllers.api.v1.ticketController.handleGetTicket);
 apiRouter.delete('/api/v1/ticket/:id', controllers.api.v1.ticketController.handleDeleteTicket);
 
