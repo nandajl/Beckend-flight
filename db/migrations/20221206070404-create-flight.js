@@ -36,11 +36,17 @@ module.exports = {
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE',
       },
+      arrival_date: {
+        type: Sequelize.STRING,
+      },
       arrival_time: {
-        type: Sequelize.DATE,
+        type: Sequelize.STRING,
+      },
+      departure_date: {
+        type: Sequelize.STRING,
       },
       departure_time: {
-        type: Sequelize.DATE,
+        type: Sequelize.STRING,
       },
       createdAt: {
         allowNull: false,

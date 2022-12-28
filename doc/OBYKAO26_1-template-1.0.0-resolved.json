@@ -1807,13 +1807,17 @@
               "to_airport_id":{
                 "type":"integer"
               },
-              "arrival_time":{
-                "type":"string",
-                "format":"date-time"
+              "arrival_date":{
+                "type":"string"
               },
-              "departure":{
-                "type":"string",
-                "format":"date-time"
+              "arrival_time":{
+                "type":"string"
+              },
+              "departure_date":{
+                "type":"string"
+              },
+              "departure_time":{
+                "type":"string"
               },
               "createdAt":{
                 "type": "string",
@@ -1867,13 +1871,17 @@
               "to_airport_id":{
                 "type":"integer"
               },
-              "arrival_time":{
-                "type":"date",
-                "format":"date-time"
+              "arrival_date":{
+                "type":"string"
               },
-              "departure":{
-                "type":"date",
-                "format":"date-time"
+              "arrival_time":{
+                "type":"string"
+              },
+              "departure_date":{
+                "type":"string"
+              },
+              "departure_time":{
+                "type":"string"
               },
               "createdAt":{
                 "type": "string",
