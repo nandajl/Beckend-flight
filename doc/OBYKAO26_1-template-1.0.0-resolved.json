@@ -1209,6 +1209,46 @@
           }
         }
       }
+    },
+    "/api/v1/notification/user/{id}": {
+      "get": {
+        "tags": ["Notification"],
+        "description":"Get data notification by user id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A success full response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/res-notification"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/general-error"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -2024,11 +2064,29 @@
           "data": {
             "type": "object",
             "properties":{
-              "isReadAdmin":{
+              "id":{
+                "type":"integer",
+                "example":"1"
+              },
+              "transaction_id":{
+                "type":"integer"
+              },
+              "user_id":{
+                "type":"integer"
+              },
+              "message":{
+                "type":"string"
+              },
+              "isRead":{
                 "type":"boolean"
               },
-              "isReadBuyer":{
-                "type":"boolean"
+              "createdAt":{
+                "type": "string",
+                "format":"date-time"
+              },
+              "updatedAt":{
+                "type": "string",
+                "format":"date-time"
               }
             }
           }
