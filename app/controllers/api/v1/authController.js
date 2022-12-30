@@ -2,27 +2,28 @@
 const authService = require('../../../services/authService')
 
 module.exports = {
-    handleRegister(req,res){
+    async handleRegister(req,res){
+    try {
         const {username, email, password} = req.body;
         const role = "buyer"
-        authService.register(username, email, password, role).then((user)=>{
-            if(!user){
-                res.status(401).json({
-                    staus: "FAIL",
-                    message: `User with email ${email} already exist, please login`
-                })
-                return;
-            }
-            res.status(201).json({
-                status: "OK",
-                data: user
+        const user = await authService.register(username, email, password, role);
+            
+        if(!user){
+            return res.status(401).json({
+                status: "FAIL",
+                message: `User with email ${email} already exist, please login`
             })
-        }).catch((err)=>{
-            res.status(400).json({
-                staus: "FAIL",
-                message: err.message,
-            });
-        });
+        }
+        res.status(201).json({
+            status: "OK",
+            data: user
+        })
+    } catch (error) {
+        res.status(400).json({
+            staus: "FAIL",
+            message: err.message,
+        });   
+    }
     },
 
     handleLogin(req,res){
