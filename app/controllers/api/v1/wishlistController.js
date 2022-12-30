@@ -18,23 +18,6 @@ module.exports = {
         }
     },
 
-    async handleUpdateWishlist(req, res){
-        try {
-            const body = req.body
-            const id = req.params.id
-            const wishlist = await wishlistService.update(id, body)
-            res.status(201).json({
-                status: "OK",
-                data: body
-            })
-        } catch (err) {
-            res.status(400).json({
-                status: "FAIL",
-                message: err.message
-            })
-        }
-    },
-
     async handleListWishlist(req, res){
         try {
             const { data, count } = await wishlistService.getAllWishlist()
