@@ -23,10 +23,9 @@ module.exports = {
             const body = req.body
             const id = req.params.id
             const plane = await planeService.update(id, body)
-            const data = await planeService.getPlane(id) 
             res.status(201).json({
                 status: "OK",
-                data: data
+                data: body
             })
         } catch (err) {
             res.status(400).json({
