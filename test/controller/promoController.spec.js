@@ -1,4 +1,4 @@
-const promoController = require("../app/controllers/api/v1/promoController")
+const promoController = require("../../app/controllers/api/v1/promoController")
 const {
     handleCreatePromo,
     handleGetAllPromo,
@@ -7,7 +7,7 @@ const {
     handleDeletePromo,
     handleFindPromo
 } = promoController;
-const promoService = require("../app/services/promoService")
+const promoService = require("../../app/services/promoService")
 
 const mockPromo = {
     id: 1,

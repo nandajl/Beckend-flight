@@ -36,7 +36,7 @@ function verifyToken(token) {
 
 module.exports = {
     encryptPassword,
-
+    createWebToken,
     async register(username, email, password, role){
         try {
             const encryptedPassword = await encryptPassword(password);

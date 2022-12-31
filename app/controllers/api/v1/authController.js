@@ -3,35 +3,36 @@ const authService = require('../../../services/authService')
 
 module.exports = {
     async handleRegister(req,res){
-    try {
-        const {username, email, password} = req.body;
-        const role = "buyer"
-        const user = await authService.register(username, email, password, role);
-            
-        if(!user){
-            return res.status(401).json({
-                status: "FAIL",
-                message: `User with email ${email} already exist, please login`
+        try {
+            const {username, email, password} = req.body;
+            const role = "buyer"
+            const user = await authService.register(username, email, password, role);
+                
+            if(!user){
+                return res.status(401).json({
+                    status: "FAIL",
+                    message: `User with email ${email} already exist, please login`
+                })
+            }
+            res.status(201).json({
+                status: "OK",
+                data: user
             })
+        } catch (err) {
+            res.status(400).json({
+                status: "FAIL",
+                message: err.message,
+            });   
         }
-        res.status(201).json({
-            status: "OK",
-            data: user
-        })
-    } catch (error) {
-        res.status(400).json({
-            staus: "FAIL",
-            message: err.message,
-        });   
-    }
     },
 
-    handleLogin(req,res){
-        const {email, password} = req.body;
-        authService.login(email, password).then((auth)=>{
+    async handleLogin(req,res){
+        try {
+            const {email, password} = req.body;
+            const auth = await authService.login(email, password);
             if(!auth){
                 res.status(401).json({
-                    staus: "FAIL",
+                    status: "FAIL",
                     message: "Email or password is not identified",
                 })
                 return;
@@ -40,53 +41,55 @@ module.exports = {
                 status: "OK",
                 data: auth
             })
-        }).catch((err)=>{
+        } catch (err) {
             res.status(400).json({
-                staus: "FAIL",
+                status: "FAIL",
                 message: err.message,
             });
-        });
+        }
     },
 
-    authorize(req, res, next){
-        const bearerToken = req.headers.authorization;
-        if (!bearerToken) {
-            res.status(403).json({
-                message: "Unauthorized",
-            })
-            return;
-        }
-
-        const token = bearerToken.split('Bearer ')[1];
-        authService.authorize(token).then((user) =>{
+    async authorize(req, res, next){
+        try {
+            const bearerToken = req.headers.authorization;
+            if (!bearerToken) {
+                res.status(403).json({
+                    message: "WRONG BEARER TOKEN",
+                })
+                return;
+            }
+            const token = bearerToken.split('Bearer ')[1];
+            
+            const user = await authService.authorize(token)
             if (!user) {
                 res.status(403).json({
-                    message: "Unauthorized"
+                    message: "UNAUTHORIZED"
                 })
                 return;
             }
 
             req.user = user;
             next();
-        }).catch((err) => {
-            res.status(403).json({
-                message: "Unauthorized",
+
+        } catch (err) {
+            res.status(400).json({
+                message: "NEED AUTHORIZATION",
             })
-            return;
-        }) 
+        }
     },
 
-    authorizeAdmin(req, res, next){
-        const bearerToken = req.headers.authorization;
-        if (!bearerToken) {
-            res.status(403).json({
-                message: "Unauthorized",
-            })
-            return;
-        }
+    async authorizeAdmin(req, res, next){
+        try {
+            const bearerToken = req.headers.authorization;
+            if (!bearerToken) {
+                res.status(403).json({
+                    message: "WRONG BEARER TOKEN",
+                })
+                return;
+            }
 
-        const token = bearerToken.split('Bearer ')[1];
-        authService.authorizeAdmin(token).then((user) =>{
+            const token = bearerToken.split('Bearer ')[1];
+            const user = await authService.authorizeAdmin(token);
             if (!user) {
                 res.status(403).json({
                     message: "Your not an admin"
@@ -95,28 +98,22 @@ module.exports = {
             }
 
             req.user = user;
-            next();
-        }).catch((err) => {
-            res.status(403).json({
-                message: "Unauthorized",
-            })
-            return;
-        }) 
+            next()
+
+        } catch (err) {
+            res.status(400).json({
+                message: "NEED AUTHORIZATION",
+            });
+        }
     },
 
     whoAmI(req, res){
-        try {
-            const user = req.user;
-            res.status(201).json({
-                status: "OK",
-                data: user
-            })
-            return;            
-        } catch (err) {
-            res.status(401).json({
-                status: "FAIL",
-                message: err.message
-            })
-        }
+        const user = req.user;
+        res.status(201).json({
+            status: "OK",
+            data: user
+        })
+        return; 
     }
+    
 }

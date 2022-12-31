@@ -1,6 +1,6 @@
-const userController = require("../app/controllers/api/v1/userController");
-const authService = require("../app/services/authService");
-const userService = require("../app/services/userService");
+const userController = require("../../app/controllers/api/v1/userController");
+const authService = require("../../app/services/authService");
+const userService = require("../../app/services/userService");
 const {
     update,
     list,
