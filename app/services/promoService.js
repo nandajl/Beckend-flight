@@ -23,10 +23,7 @@ module.exports = {
             body.photo = result.url
             return promoRepository.create(body);
         } catch (err) {
-            return res.status(400).json({
-                status: "FAIL",
-                message: "Upload image failed"
-            })
+            return err.message
         }
     }
   },
@@ -49,17 +46,14 @@ module.exports = {
             body.photo = result.url
             return promoRepository.update(body, id);
         } catch (err) {
-            return res.status(400).json({
-                status: "FAIL",
-                message: "Upload image failed"
-            })
+          return err.message
         }
     }
   },
   getById(id) {
     return promoRepository.findById(id);
   },
-  delete(id) {
+  destroy(id) {
     return promoRepository.delete(id);
   },
 
