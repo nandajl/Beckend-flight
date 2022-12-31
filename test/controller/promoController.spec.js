@@ -257,7 +257,7 @@ describe('handleDeletePromo', () => {
             }
         };
 
-        promoService.delete = jest.fn().mockReturnThis()
+        promoService.destroy = jest.fn().mockReturnThis()
 
         await handleDeletePromo(mockReq, mockRes);
 

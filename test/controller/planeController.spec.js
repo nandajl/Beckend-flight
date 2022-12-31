@@ -9,6 +9,7 @@ const {
 } = planeController;
 
 const mockPlane = {
+    id: 1,
     name: 'Citylink',
     capacity: 100,
     status: 'Available',
@@ -17,6 +18,7 @@ const mockPlane = {
 };
 
 const mockPlaneRes = {
+    id: mockPlane.id,
     name: mockPlane.name,
     capacity: mockPlane.capacity,
     status: mockPlane.status,
@@ -74,7 +76,7 @@ describe('handleCreatePlane', () => {
     });
 });
 
-describe('handleGetAllPlane', () => {
+describe('handleListPlane', () => {
     it('should returns a list of all planes', async () => {
         const mockReq = {};
 
