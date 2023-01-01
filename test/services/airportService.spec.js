@@ -6,7 +6,7 @@ const {
     update,
     getAll,
     getByPk,
-    destory
+    destroy
 } = airportService;
 
 const mockAirport = {
@@ -43,10 +43,8 @@ describe('create', () => {
 });
 
 describe('update', () => {
-    it('should return data airport if update success', async() => {
-        const body = {
-            name: mockAirport.name
-        };
+    it('should return data airport if update without image success', async() => {
+        const body = mockAirport;
         const id = mockAirport.id;
 
         airportRepository.update = jest.fn().mockResolvedValue(mockAirportRes);
@@ -55,5 +53,61 @@ describe('update', () => {
 
         expect(result).toEqual(mockAirportRes);
         expect(airportRepository.update).toHaveBeenCalled();
+    });
+});
+
+describe('getAll', () => {
+    it('should return all airport', async () => {
+        const airports = [];
+
+        airports.push({
+            ...mockAirportRes
+        });
+
+        const count = airports.length;
+
+        airportRepository.getAll = jest.fn().mockResolvedValue(airports);
+        airportRepository.getTotalCount = jest.fn().mockResolvedValue(count);
+
+        const result = await getAll();
+
+        expect(result).toEqual({
+            data: airports,
+            count: count
+        });
+        expect(airportRepository.getAll).toHaveBeenCalled();
+    });
+    it('should throw err if request failed', async () => {
+        airportRepository.getAll = jest.fn().mockRejectedValue(err);
+
+        await getAll();
+
+        expect(err.message).toEqual(err.message);
+    })
+});
+
+describe('getByPk', () => {
+    it('should return data airports by id', async () => {
+        const id = mockAirport.id
+
+        airportRepository.getByPk = jest.fn().mockResolvedValue(mockAirportRes);
+
+        const result = await getByPk(id);
+
+        expect(result).toEqual(mockAirportRes);
+        expect(airportRepository.getByPk).toHaveBeenCalled();
+    });
+});
+
+describe('destroy', () => {
+    it('should return if airport success delete', async () => {
+        const id = mockAirport.id
+
+        airportRepository.delete = jest.fn().mockResolvedValue(null);
+
+        const result = await destroy();
+
+        expect(result).toBeNull();
+        expect(airportRepository.delete).toHaveBeenCalled();
     });
 });

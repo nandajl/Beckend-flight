@@ -72,7 +72,7 @@ module.exports = {
   async handleDeleteAirport(req, res) {
     try {
       const id = req.params.id;
-      await airportService.destory(id);
+      await airportService.destroy(id);
 
       res.status(201).json({
         status: 'OK',

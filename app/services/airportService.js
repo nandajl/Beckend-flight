@@ -6,7 +6,7 @@ module.exports = {
   },
 
   update(id, body) {
-    airportRepository.update(id, body);
+    return airportRepository.update(id, body);
   },
 
   async getAll() {
@@ -19,7 +19,7 @@ module.exports = {
         count: count,
       };
     } catch (err) {
-      throw err;
+      return err;
     }
   },
 
@@ -27,7 +27,7 @@ module.exports = {
     return airportRepository.getByPk(id);
   },
 
-  destory(id) {
+  destroy(id) {
     return airportRepository.delete(id);
   },
 };
