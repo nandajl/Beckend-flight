@@ -70,7 +70,7 @@ module.exports = {
     async handleDeletePlane(req, res){
         try {
             const id = req.params.id
-            const plane = await planeService.delete(id)
+            const plane = await planeService.destroy(id)
             res.status(200).json({
                 status: "OK",
                 message: "Plane successfully deleted"

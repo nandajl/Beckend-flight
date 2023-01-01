@@ -22,12 +22,12 @@ module.exports = {
                 count: count
             }
         } catch (err) {
-            throw err
+            return err
         }
     },
 
-    delete(id){
-        return planeRepository.delete(id)
+    destroy(id){
+        return planeRepository.destroy(id)
     }
 
 }

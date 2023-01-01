@@ -21,7 +21,7 @@ module.exports = {
         return Plane.findByPk(id)
     },
 
-    delete(id){
+    destroy(id){
         return Plane.destroy({
             where : {
                 id
