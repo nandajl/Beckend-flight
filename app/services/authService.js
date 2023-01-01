@@ -37,16 +37,15 @@ function verifyToken(token) {
 module.exports = {
     encryptPassword,
     createWebToken,
+    comparePassword,
+    verifyToken,
     async register(username, email, password, role){
         try {
             const encryptedPassword = await encryptPassword(password);
-            if (!encryptedPassword) {
-                return false;
-            }
 
             const checkUser = await userRepository.findUser({email})
             if(checkUser){
-                return false;
+                return "user alredy exist";
             }  
 
             const body = {
@@ -60,7 +59,7 @@ module.exports = {
             return user;
             
         } catch (err) {
-            throw err;
+            return err;
         }
     },
 
@@ -69,15 +68,15 @@ module.exports = {
             const user = await userRepository.findUser({email});
     
             if (!user) {
-                return false;
+                return "User not found";
             }
-    
+            
             const {password: encryptedPassword} = user;
 
             const isAuthenticated = await comparePassword(password, encryptedPassword);
-        
+            
             if (!isAuthenticated) {
-                return false
+                return "WRONG PASSWORD"
             }
     
             //generate token
@@ -95,7 +94,7 @@ module.exports = {
             return data;
             
         } catch (err) {
-            throw err;
+            return err;
         }
     },
 
@@ -121,7 +120,6 @@ module.exports = {
             const role = payload?.role;
             if (role == "admin") {
                 const user = await userRepository.findUser(id);
-        
                 return user;
             }
             return false;
