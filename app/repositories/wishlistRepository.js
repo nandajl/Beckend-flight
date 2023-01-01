@@ -43,7 +43,7 @@ module.exports = {
         })
     },
 
-    delete(id){
+    destroy(id){
         return Wishlist.destroy({
             where : {
                 id

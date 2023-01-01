@@ -199,7 +199,7 @@ describe('handleDeleteWishlist', () => {
             }
         };
 
-        wishlistService.delete = jest.fn().mockReturnThis()
+        wishlistService.destroy = jest.fn().mockReturnThis()
 
         await handleDeleteWishlist(mockReq, mockRes);
 
@@ -216,7 +216,7 @@ describe('handleDeleteWishlist', () => {
             }
         };
 
-        wishlistService.delete = jest.fn().mockReturnValue(Promise.reject(err));
+        wishlistService.destroy = jest.fn().mockReturnValue(Promise.reject(err));
 
         await handleDeleteWishlist(mockReq, mockRes);
 

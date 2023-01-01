@@ -111,7 +111,7 @@ module.exports = {
     async handleDeleteTransaction(req, res){
         try {
             const id = req.params.id
-            const transaction = await transactionService.delete(id)
+            const transaction = await transactionService.destroy(id)
             res.status(200).json({
                 status: "OK",
                 message: "Transaction successfully deleted"

@@ -26,11 +26,11 @@ module.exports = {
                 count: count
             }
         } catch (err) {
-            throw err
+            return err
         }
     },
 
-    delete(id){
-        return wishlistRepository.delete(id)
+    destroy(id){
+        return wishlistRepository.destroy(id)
     }
 }

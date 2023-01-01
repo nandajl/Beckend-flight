@@ -42,7 +42,7 @@ module.exports = {
         })
     },
 
-    delete(id){
+    destroy(id){
         return Transaction.destroy({
             where : {
                 id

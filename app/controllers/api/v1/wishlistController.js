@@ -69,7 +69,7 @@ module.exports = {
     async handleDeleteWishlist(req, res){
         try {
             const id = req.params.id
-            const wishlist = await wishlistService.delete(id)
+            const wishlist = await wishlistService.destroy(id)
             res.status(200).json({
                 status: "OK",
                 message: "Wishlist successfully deleted"

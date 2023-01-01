@@ -26,12 +26,12 @@ module.exports = {
                 count: count
             }
         } catch (err) {
-            throw err
+            return err
         }
     },
 
-    delete(id){
-        return transactionRepository.delete(id)
+    destroy(id){
+        return transactionRepository.destroy(id)
     }
 
 }

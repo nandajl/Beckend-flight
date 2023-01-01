@@ -265,7 +265,7 @@ describe('handleDeleteTransaction', () => {
             }
         };
 
-        transactionService.delete = jest.fn().mockReturnThis()
+        transactionService.destroy = jest.fn().mockReturnThis()
 
         await handleDeleteTransaction(mockReq, mockRes);
 
@@ -282,7 +282,7 @@ describe('handleDeleteTransaction', () => {
             }
         };
 
-        transactionService.delete = jest.fn().mockReturnValue(Promise.reject(err));
+        transactionService.destroy = jest.fn().mockReturnValue(Promise.reject(err));
 
         await handleDeleteTransaction(mockReq, mockRes);
 
