@@ -169,12 +169,12 @@ describe('destroy', () => {
     it('should return all promos', async () => {
         const id = mockPromo.id
 
-        promoRepository.delete = jest.fn().mockResolvedValue(null);
+        promoRepository.destroy = jest.fn().mockResolvedValue(null);
 
         const result = await destroy();
 
         expect(result).toBeNull();
-        expect(promoRepository.delete).toHaveBeenCalled();
+        expect(promoRepository.destroy).toHaveBeenCalled();
     });
 });
 

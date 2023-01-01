@@ -16,7 +16,7 @@ module.exports = {
   findById(id) {
     return Promo.findByPk(id);
   },
-  delete(id) {
+  destroy(id) {
     return Promo.destroy({ where: { id } });
   },
 
