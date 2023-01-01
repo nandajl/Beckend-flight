@@ -11,7 +11,7 @@ module.exports = {
         count: count,
       };
     } catch (err) {
-      throw err;
+      return err;
     }
   },
 
@@ -23,8 +23,8 @@ module.exports = {
     return flightRepository.update(id, body);
   },
 
-  delete(id) {
-    return flightRepository.delete(id);
+  destroy(id) {
+    return flightRepository.destroy(id);
   },
 
   getByPk(id) {

@@ -220,7 +220,7 @@ describe('handleDeleteFlight', () => {
             }
         };
 
-        flightService.delete = jest.fn().mockReturnThis()
+        flightService.destroy = jest.fn().mockReturnThis()
 
         await handleDeleteFlight(mockReq, mockRes);
 
@@ -237,7 +237,7 @@ describe('handleDeleteFlight', () => {
             }
         };
 
-        flightService.delete = jest.fn().mockReturnValue(Promise.reject(err));
+        flightService.destroy = jest.fn().mockReturnValue(Promise.reject(err));
 
         await handleDeleteFlight(mockReq, mockRes);
 

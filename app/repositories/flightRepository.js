@@ -23,7 +23,7 @@ module.exports = {
     return Flight.findByPk(id);
   },
 
-  delete(id) {
+  destroy(id) {
     return Flight.destroy({ where: { id } });
   }
 };
