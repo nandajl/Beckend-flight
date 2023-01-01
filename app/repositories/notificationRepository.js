@@ -12,23 +12,9 @@ module.exports = {
             }
         })
     },
-
-    getAllNotifications(){
-        return Notification.findAll({
-            include: [ { all: true, nested: true } ]
-        })
-    },
-
+    
     getNotification(id){
         return Notification.findByPk(id)
-    },
-
-    delete(id){
-        return Notification.destroy({
-            where : {
-                id
-            }
-        })
     },
 
     findUserNotification(condition){
