@@ -53,7 +53,7 @@ module.exports = {
 
     async destroy(req, res){
         try {
-            await userService.delete(req.params.id);
+            await userService.destroy(req.params.id);
             res.status(200).end();
         } catch (err) {
             res.status(422).json({

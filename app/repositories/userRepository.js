@@ -9,10 +9,6 @@ module.exports = {
         return User.findOne({where: condition})
     },
 
-    findUserByPk(id){
-        return User.findByPk(id)
-    },
-
     update(id, update){
         return User.update(update, {
             where: {
@@ -21,7 +17,7 @@ module.exports = {
         })
     },
 
-    delete(id){
+    destroy(id){
         return User.destroy({
             where : { id }
         })

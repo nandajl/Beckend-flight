@@ -20,23 +20,19 @@ module.exports = {
             const fileBase64 = image.buffer.toString("base64");
             const file = `data:${image.mimetype};base64,${fileBase64}`;
             try {
-                console.log("body : ", body)
                 const result = await cloudinary.uploader.upload(file, {
                     folder: "image"
                 })
                 body.photo = result.url
                 return userRepository.update(id, body);
             } catch (err) {
-                return res.status(400).json({
-                    status: "FAIL",
-                    message: "Upload image failed"
-                })
+                return err
             }
         }
     },
 
-    delete(id) {
-        return userRepository.delete(id);
+    destroy(id) {
+        return userRepository.destroy(id);
     },
 
     async list(role) {
@@ -49,7 +45,7 @@ module.exports = {
                 count: userCount,
             };
         } catch (err) {
-            throw err;
+            return err;
         }
     },
 

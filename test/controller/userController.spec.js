@@ -177,7 +177,7 @@ describe('destroy', () => {
             }
         };
 
-        userService.delete = jest.fn().mockReturnThis()
+        userService.destroy = jest.fn().mockReturnThis()
 
         await destroy(mockReq, mockRes);
 
