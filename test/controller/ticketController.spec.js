@@ -218,7 +218,7 @@ describe('handleDeleteTicket', () => {
             }
         };
 
-        ticketService.delete = jest.fn().mockReturnThis()
+        ticketService.destroy = jest.fn().mockReturnThis()
 
         await handleDeleteTicket(mockReq, mockRes);
 
@@ -235,7 +235,7 @@ describe('handleDeleteTicket', () => {
             }
         };
 
-        ticketService.delete = jest.fn().mockReturnValue(Promise.reject(err));
+        ticketService.destroy = jest.fn().mockReturnValue(Promise.reject(err));
 
         await handleDeleteTicket(mockReq, mockRes);
 

@@ -71,7 +71,7 @@ module.exports = {
     async handleDeleteTicket(req, res){
         try {
             const id = req.params.id
-            const ticket = await ticketService.delete(id)
+            const ticket = await ticketService.destroy(id)
             res.status(201).json({
                 status: "OK",
                 message: "Ticket successfully deleted"

@@ -16,7 +16,6 @@ module.exports = {
             const fileBase64 = image.buffer.toString("base64");
             const file = `data:${image.mimetype};base64,${fileBase64}`;
             try {
-                console.log("body : ", body)
                 const result = await cloudinary.uploader.upload(file, {
                     folder: "image"
                 })
@@ -42,16 +41,13 @@ module.exports = {
                 body.photo = result.url
                 return ticketRepository.update(id, body)
             } catch (err) {
-                return res.status(400).json({
-                    status: "FAIL",
-                    message: "Upload image failed"
-                })
+                return err.message
             }
         }
     },
 
-    delete(id){
-        return ticketRepository.delete(id)
+    destroy(id){
+        return ticketRepository.destroy(id)
     },
 
     getTicket(id){
@@ -67,10 +63,7 @@ module.exports = {
                 count: count
             }
         } catch (err) {
-            throw err
+            return err
         }
     }
-
-
-    
 }

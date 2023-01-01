@@ -13,7 +13,7 @@ module.exports = {
         })
     },
 
-    delete(id){
+    destroy(id){
         return Ticket.destroy({
             where: {
                 id
