@@ -28,6 +28,6 @@ module.exports = {
   },
 
   destroy(id) {
-    return airportRepository.delete(id);
+    return airportRepository.destroy(id);
   },
 };

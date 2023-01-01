@@ -21,7 +21,7 @@ module.exports = {
     return Airport.findByPk(id);
   },
 
-  delete(id) {
+  destroy(id) {
     return Airport.destroy({ where: { id } });
   },
 };

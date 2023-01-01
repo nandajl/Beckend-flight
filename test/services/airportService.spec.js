@@ -103,11 +103,11 @@ describe('destroy', () => {
     it('should return if airport success delete', async () => {
         const id = mockAirport.id
 
-        airportRepository.delete = jest.fn().mockResolvedValue(null);
+        airportRepository.destroy = jest.fn().mockResolvedValue(null);
 
         const result = await destroy();
 
         expect(result).toBeNull();
-        expect(airportRepository.delete).toHaveBeenCalled();
+        expect(airportRepository.destroy).toHaveBeenCalled();
     });
 });
