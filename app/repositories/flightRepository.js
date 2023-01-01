@@ -25,9 +25,5 @@ module.exports = {
 
   delete(id) {
     return Flight.destroy({ where: { id } });
-  },
-
-  findFlight(condition){
-    return Flight.findAll({where: condition})
-},
+  }
 };

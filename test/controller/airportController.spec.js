@@ -205,7 +205,7 @@ describe('handleDeleteAirport', () => {
             }
         };
 
-        airportService.delete = jest.fn().mockReturnThis()
+        airportService.destory = jest.fn().mockReturnThis()
 
         await handleDeleteAirport(mockReq, mockRes);
 
@@ -222,7 +222,7 @@ describe('handleDeleteAirport', () => {
             }
         };
 
-        airportService.delete = jest.fn().mockReturnValue(Promise.reject(err));
+        airportService.destory = jest.fn().mockReturnValue(Promise.reject(err));
 
         await handleDeleteAirport(mockReq, mockRes);
 
