@@ -52,10 +52,10 @@ apiRouter.get('/api/v1/wishlist', controllers.api.v1.authController.authorizeAdm
 apiRouter.post('/api/v1/wishlist', controllers.api.v1.wishlistController.handleCreateWishlist);
 apiRouter.get('/api/v1/wishlist/:id', controllers.api.v1.wishlistController.handleGetWishlist);
 apiRouter.get('/api/v1/wishlist/user/:id', controllers.api.v1.wishlistController.handleFindWishlist);
-apiRouter.delete('/api/v1/wishlist/:id', controllers.api.v1.authController.authorizeAdmin, controllers.api.v1.wishlistController.handleDeleteWishlist);
+apiRouter.delete('/api/v1/wishlist/:id', controllers.api.v1.wishlistController.handleDeleteWishlist);
 
 // airport
-apiRouter.post('/api/v1/airport', controllers.api.v1.authController.authorizeAdmin, controllers.api.v1.airportConroller.handleCreateAirport);
+apiRouter.post('/api/v1/airport', controller     s.api.v1.authController.authorizeAdmin, controllers.api.v1.airportConroller.handleCreateAirport);
 apiRouter.put('/api/v1/airport/:id', controllers.api.v1.authController.authorizeAdmin, controllers.api.v1.airportConroller.handleUpdateAirport);
 apiRouter.get('/api/v1/airport', controllers.api.v1.airportConroller.handleGetAllAirport);
 apiRouter.get('/api/v1/airport/:id', controllers.api.v1.airportConroller.handleGetByPk);
