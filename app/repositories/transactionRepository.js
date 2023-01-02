@@ -22,7 +22,17 @@ module.exports = {
     getTransaction(id){
         return Transaction.findByPk(id, {
             include: [ 
-                { model: Ticket }
+                { model: Ticket,
+                  include: [{ model: Flight,
+                    include: [
+                      { model: Plane },
+                      { model: Airport, as: 'from' },
+                      { model: Airport, as: 'to' }
+                    ]  
+                  }]
+                },
+                { model: User },
+                { model: Promo },
             ]
         })
     },
