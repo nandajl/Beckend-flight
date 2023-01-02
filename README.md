@@ -1,15 +1,52 @@
-# TakeOff API
+# TakeOff Backend API
 
-## Tools
+Restful API for takeoff, flight application for web and android. this is part of  fullstack web developmen course final project. 
 
-- bcryptjs
-- express
-- jsonwebtoken
-- sequelize
+## Live Application
 
-## Live demo
-https://beckend-takeoff-production.up.railway.app
+This application is currently deployed using [railway.app](railway.app).  
+You can access this application on [https://beckend-takeoff-production-46fc.up.railway.app/](https://beckend-takeoff-production-46fc.up.railway.app)  
+  
+Information about server routes and documentation can be seen [here](#routes-and-documentation).
 
-## DB
+## Running Local App
 
-![image](./doc/img/db.png)
+to run this app in local folllow this instruction
+
+### Setup Local Server and Database
+
+    npm install / yarn install
+
+After that, run this command to setup database with sequelize. Remember to setup `.env` file on this project first with your postgres database, cloudinary.
+
+### Running Server
+
+    npm run start / yarn start
+
+run this command to start express server normally. To run the server in development mode, use this command instead:
+
+    npm run develop / yarn develop
+
+To run unit tests, use this command:
+
+    npm test / yarn test
+
+## Routes, Documentation, and Test Coverage
+
+### Routes and Documentation
+
+Open API Documentation:
+
+[https://beckend-takeoff-production-46fc.up.railway.app/api-docs](https://beckend-takeoff-production-46fc.up.railway.app/api-docs)
+
+Default admin account
+
+    {
+      email: 'admin@mail.com',
+      password: '12345',
+    }
+
+### Test Coverage
+
+
+![coverage test details](doc/unit-test.png)
