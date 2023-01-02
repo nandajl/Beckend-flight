@@ -20,7 +20,11 @@ module.exports = {
     },
 
     getTransaction(id){
-        return Transaction.findByPk(id)
+        return Transaction.findByPk(id, {
+            include: [ 
+                { model: Ticket }
+            ]
+        })
     },
 
     findUserTransaction(condition){

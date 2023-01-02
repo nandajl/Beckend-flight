@@ -10,16 +10,18 @@ module.exports = {
             const transaction = await transactionService.create(body)
             if (transaction) {
                 try {
+                    const dataTransaction = await transactionService.getTransaction(transaction.dataValues.id);
+                    const desc = dataTransaction.Ticket.desc
                     const notificationBuyerBody = {
                         transaction_id : transaction.dataValues.id,
                         user_id: transaction.dataValues.user_id, 
-                        message: "Booking Success",
+                        message: `Booking ${desc} Success`,
                         isRead: false
                     }
                     const notificationAdminBody = {
                         transaction_id : transaction.dataValues.id,
                         user_id : 1,
-                        message: "There are new transaction",
+                        message: `There are new transaction, ${desc}`,
                         isRead: false
                     }
                     await notificationService.create(notificationBuyerBody)   
