@@ -24,8 +24,15 @@ module.exports = {
                         message: `There are new transaction, ${desc}`,
                         isRead: false
                     }
+                    const notificationAdminBody2 = {
+                        transaction_id : transaction.dataValues.id,
+                        user_id : 14,
+                        message: `There are new transaction, ${desc}`,
+                        isRead: false
+                    }
                     await notificationService.create(notificationBuyerBody)   
                     await notificationService.create(notificationAdminBody)   
+                    await notificationService.create(notificationAdminBody2)   
                 } catch (err) {
                     res.status(400).json({
                         status: "FAIL",
