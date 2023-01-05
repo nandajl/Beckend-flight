@@ -8,7 +8,7 @@ module.exports = {
             const role = "buyer"
             const user = await authService.register(username, email, password, role);
                 
-            if(!user){
+            if(user.code == 401){
                 return res.status(401).json({
                     status: "FAIL",
                     message: `User with email ${email} already exist, please login`
@@ -30,10 +30,17 @@ module.exports = {
         try {
             const {email, password} = req.body;
             const auth = await authService.login(email, password);
-            if(!auth){
+            if(auth.code === 401){
                 res.status(401).json({
                     status: "FAIL",
-                    message: "Email or password is not identified",
+                    message: auth.message,
+                })
+                return;
+            }
+            else if(auth.code === 404){
+                res.status(404).json({
+                    status: "FAIL",
+                    message: auth.message,
                 })
                 return;
             }

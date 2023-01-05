@@ -45,7 +45,9 @@ module.exports = {
 
             const checkUser = await userRepository.findUser({email})
             if(checkUser){
-                return "user alredy exist";
+                return {
+                    code: "401"
+                }
             }  
 
             const body = {
@@ -68,7 +70,10 @@ module.exports = {
             const user = await userRepository.findUser({email});
     
             if (!user) {
-                return "User not found";
+                return {
+                    code: 404,
+                    message: "Email is not identified"
+                }
             }
             
             const {password: encryptedPassword} = user;
@@ -76,7 +81,11 @@ module.exports = {
             const isAuthenticated = await comparePassword(password, encryptedPassword);
             
             if (!isAuthenticated) {
-                return "WRONG PASSWORD"
+                return {
+                    code: 401,
+                    status: "FAIL",
+                    message: "WRONG PASSWORD"
+                }
             }
     
             //generate token
