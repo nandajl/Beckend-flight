@@ -42,8 +42,8 @@ Open API Documentation:
 Default admin account
 
     {
-      email: 'admin@mail.com',
-      password: '12345',
+      email: 'admin2@mail.com',
+      password: 'Admin123!',
     }
 
 ### Test Coverage
