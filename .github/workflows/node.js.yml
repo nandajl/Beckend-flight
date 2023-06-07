@@ -30,4 +30,4 @@ jobs:
     - run: npm install -g npm
     - run: npm install
     
-    - run: npm jest
+    - run: npm test
